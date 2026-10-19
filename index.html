@@ -334,7 +334,7 @@ const ph = f => 'assets/experts/' + f;
 const logo = o => D.logos[o] ? `<img src="assets/logos/${D.logos[o]}" alt="">` : `<span class="gen">${ic('wrench')}</span>`;
 const nb = x => (Math.round(x * 10) / 10).toString().replace('.', ',');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const st = { profil: {}, taille: null, lieu: null, effectifs: {}, secteur: null, secteurAutre: '', depts: [], taches: {}, ordre: {}, autres: {}, outils: {}, infos: { lieux: [] }, mat: {}, objectif: null, libre: {} };
+const st = { profil: {}, taille: null, lieu: null, effectifs: {}, secteur: null, secteurAutre: '', depts: [], taches: {}, ordre: {}, autres: {}, outils: {}, infos: { lieux: [] }, mat: {}, objectif: null, libre: {}, volumes: {} };
 const parId = {}; D.departements.forEach(d => d.taches.forEach(t => parId[t.id] = { t, d }));
 const dep = id => D.departements.find(d => d.id === id);
 const autreId = d => 'x-' + d;
@@ -425,6 +425,7 @@ const VUES = {
     d.taches.map(t => `<div class="task ${t.id in st.taches ? 'sel' : ''}" data-t="${t.id}">
         <button class="task-row" data-tache="${t.id}"><span class="box">${ic('check')}</span><span class="l">${t.label}</span></button>${heures(t.id)}</div>`).join('') +
     `<div class="task task-autre ${xid in st.taches ? 'sel' : ''}" data-t="${xid}"><div class="task-row"><button class="box" data-tache="${xid}" style="cursor:pointer" aria-label="Cocher">${ic('check')}</button><input id="autre-l" data-d="${id}" placeholder="Une autre tâche ? Décrivez-la ici" value="${esc(a.label)}"></div>${heures(xid)}</div>
+    <div class="mq" style="margin-top:18px"><h3><span class="chip">${ic('gauge')}</span>${d.volume.question}</h3>${echelle('vol-' + id, d.volume.options, st.volumes[id])}</div>
     <div id="rank"></div>
     <div class="tools"><p>${ic('zap')} Les outils que ce service utilise</p><div class="logos" id="logos">${outilsDe(id).map(o => `<button class="logo-b ${(st.outils[id] || []).includes(o) ? 'on' : ''}" data-outil="${esc(o)}" data-d="${id}">${logo(o)}${esc(o)}</button>`).join('')}</div>
       <div class="add-tool"><input id="outil-in" placeholder="Un autre outil ? Ex. Zoho, Perfecto, Saari"><button data-a="addtool" data-d="${id}">${ic('plus')} Ajouter</button></div></div>` + nav() + '</div>'; },
@@ -469,7 +470,7 @@ function majClassement(id){
 }
 const APRES = {
   analyse: () => { const li = document.querySelectorAll('.steps-a li'); li.forEach((l, i) => setTimeout(() => l.classList.add('on'), 350 + i * 420)); setTimeout(suiv, 2300); },
-  resultat: () => animer(),
+  resultat: () => { animer(); envoyer(); },
   profil: () => { document.getElementById('nom').focus(); document.getElementById('service').addEventListener('change', e => { document.getElementById('srv-autre').style.display = e.target.value === 'Autre' ? '' : 'none'; }); },
   taches: id => { majClassement(id); const a = document.getElementById('autre-l'); a.addEventListener('input', () => { st.autres[id] = { label: a.value.trim() }; if (a.value.trim() && !(autreId(id) in st.taches)) cocher(autreId(id), id, true); majClassement(id); }); }
 };
@@ -567,6 +568,33 @@ function resultat(){
     <p class="note">Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps déclaré ; un mois compte 4,33 semaines et une journée 8 heures. La note de maturité vient de vos réponses sur l'usage de l'IA, vos données, vos façons de faire et l'éparpillement de vos informations.</p>
     <div class="nav"><button class="btn btn-g" data-a="refaire">${ic('rotate-ccw')} Modifier mes réponses</button></div></div>`;
 }
+
+// Chaque Déclic terminé part sur le formulaire Tally « Le Déclic, réponses » (J1K7KK), recopié dans le Sheet toutes les 15 minutes.
+const TALLY = { form: 'J1K7KK', g: {"entreprise": "58bac6c2-c671-5966-b154-1b01b22f070a", "nom": "ab914b0b-bb89-5bef-bcc7-4bafc5f7d245", "email": "05aaa338-6fc7-554d-9269-ec8e5eb8136a", "fonction": "38c0e6f2-c59b-513c-8100-d7e196618b67", "service": "8047e074-3c23-5605-9d1a-7af0bffc09a3", "taille": "09c29cf4-14f1-504c-b8ec-a4fffb3e7428", "equipes": "53fa0157-215e-5fbc-af9f-52bec1455fa2", "secteur": "6c6d1a18-6bf6-5841-af69-661e4c141803", "services": "0fea9142-a491-50f0-bcba-e3d43c30c560", "taches": "9817e3a4-3e92-55f1-bd9e-99130338d84a", "outils": "ffddb552-3d8e-5ced-b08b-ee07d43dded6", "infos": "eab33346-c2a2-592f-814e-33cd7da8efd6", "note": "6f60b516-6624-5598-b524-ceb0d2e732ae", "objectif": "b4c3ced7-a788-5cd4-b447-c9f4f996d7f6", "heures": "8b2f538d-2495-5697-a42a-5ca93a55156e", "priorites": "1be0e2e6-e8aa-5703-b281-f2301aad0a58", "experts": "85f1dcc8-4e63-564f-aa5b-8709c80b5221", "irritants": "4b205a3a-9c68-5c8d-ba1a-4141dc785338", "automatiser": "797442d8-7e05-52a9-bcf7-75bde1a62f8f", "brut": "d162d464-966d-569d-a196-be355a7b4a3a"} };
+let envoye = '';
+function envoyer(){
+  const R = calcul(), p = st.profil, u = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+  const v = {
+    entreprise: p.entreprise, nom: p.nom, email: p.email, fonction: p.fonction,
+    service: p.service === 'Autre' ? 'Autre : ' + (p.serviceAutre || '') : p.service, taille: st.taille,
+    equipes: [(D.equipes.lieu.find(l => l.id === st.lieu) || {}).label, ...D.equipes.niveaux.filter(n => st.effectifs[n.id]).map(n => n.label + ' : ' + st.effectifs[n.id])].filter(Boolean).join(' ; '),
+    secteur: D.secteurs.find(s => s.autre).label === st.secteur ? 'Autre : ' + st.secteurAutre : st.secteur,
+    services: st.depts.map(d => dep(d).nom).join(', '),
+    taches: st.depts.map(did => dep(did).nom + (st.volumes[did] != null ? ' [' + dep(did).volume.question.replace(/ \?$/, '') + ' : ' + dep(did).volume.options[st.volumes[did]] + ']' : '') + ' : ' + (st.ordre[did] || []).filter(t => st.taches[t] > 0).map((t, i) => (i + 1) + '. ' + tache(t).t.label + ' (' + nb(st.taches[t]) + ' h)').join(' ; ')).join('\n'),
+    outils: st.depts.map(did => dep(did).nom + ' : ' + (st.outils[did] || []).join(', ')).filter(l => !/: $/.test(l)).join('\n'),
+    infos: 'Lieux : ' + st.infos.lieux.join(', ') + ' ; éparpillement : ' + (D.infos.eparpillement[st.infos.epar] || '') + ' ; WhatsApp : ' + (D.infos.whatsapp[st.infos.wa] || ''),
+    note: R.note + '/100 (' + R.niv.nom + ')', objectif: (D.objectifs.find(o => o.id === st.objectif) || {}).label,
+    heures: nb(R.total) + ' h perdues, ' + nb(R.repris) + ' h reprises par semaine',
+    priorites: R.liste.slice(0, 3).map((x, i) => (i + 1) + '. ' + x.t.label + ' (' + x.d.expert + ', ' + nb(x.h) + ' h)').join('\n'),
+    experts: R.ds.slice(0, 3).map(x => x.d.expert).join(', '),
+    irritants: st.libre.irritants, automatiser: st.libre.automatiser,
+    brut: JSON.stringify(st)
+  };
+  const cle = JSON.stringify(v); if (cle === envoye) return; envoye = cle;
+  const responses = {}; Object.keys(TALLY.g).forEach(k => { if (v[k]) responses[TALLY.g[k]] = String(v[k]); });
+  fetch('https://api.tally.so/forms/' + TALLY.form + '/respond', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionUuid: u(), respondentUuid: u(), responses, isCompleted: true }) }).catch(() => {});
+}
 function animer(){
   setTimeout(() => { document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'); document.getElementById('ringc').style.strokeDashoffset = 326.7 * (1 - calcul().note / 100); }, 80);
   document.querySelectorAll('.cnt').forEach(el => { const to = +el.dataset.to, t0 = performance.now(); const pas = t => { const k = Math.min(1, (t - t0) / 1300), e = 1 - Math.pow(1 - k, 3); el.textContent = nb(to * e); if (k < 1) requestAnimationFrame(pas); }; requestAnimationFrame(pas); });
@@ -592,7 +620,7 @@ app.addEventListener('click', e => {
   if (b.dataset.outil) { const l = st.outils[b.dataset.d] = st.outils[b.dataset.d] || [], o = b.dataset.outil, i = l.indexOf(o); i < 0 ? l.push(o) : l.splice(i, 1); b.classList.toggle('on', i < 0); return; }
   if (b.dataset.lieuInfo) { const l = st.infos.lieux, v = b.dataset.lieuInfo, i = l.indexOf(v); i < 0 ? l.push(v) : l.splice(i, 1); b.classList.toggle('on', i < 0); return; }
   if (b.dataset.mv) { const did = ecrans()[pos].split(':')[1], L = st.ordre[did], i = L.indexOf(b.dataset.r), j = i + +b.dataset.mv; [L[i], L[j]] = [L[j], L[i]]; return majClassement(did); }
-  if (b.dataset.q) { const q = b.dataset.q, v = +b.dataset.v; if (q === 'epar' || q === 'wa') st.infos[q] = v; else st.mat[q] = v; b.parentNode.querySelectorAll('.sc').forEach(s => s.classList.toggle('on', s === b)); return; }
+  if (b.dataset.q) { const q = b.dataset.q, v = +b.dataset.v; if (q === 'epar' || q === 'wa') st.infos[q] = v; else if (q.startsWith('vol-')) st.volumes[q.slice(4)] = v; else st.mat[q] = v; b.parentNode.querySelectorAll('.sc').forEach(s => s.classList.toggle('on', s === b)); return; }
 });
 app.addEventListener('keydown', e => {
   if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
