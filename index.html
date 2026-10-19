@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Le Déclic, par Yelema</title>
+<meta name="description" content="En trois minutes, voyez où votre entreprise perd du temps et quel Expert IA le reprend.">
+<link rel="icon" href="assets/logo/yelema-icon.png">
+<style>
+@font-face{font-family:'Space Grotesk';font-weight:300 700;font-display:swap;src:url('assets/fonts/SpaceGrotesk-Variable.woff2') format('woff2')}
+@font-face{font-family:'Funnel Display';font-weight:300 800;font-display:swap;src:url('assets/fonts/FunnelDisplay-Variable.woff2') format('woff2')}
+:root{
+  --indigo:#301667;--indigo2:#1C0F3D;--violet:#8D68FA;--violet-deep:#4A299C;--lav:#C5C4FF;--lavp:#E0E1FF;
+  --lilac:#F3EFFE;--bleu:#2E4EC4;--corail:#E4765A;--ink:#241A3A;--muted:#6B6580;--grey2:#938DA8;--line:#ECE8FA;
+  --card-dark:#3D227E;--border-dark:#4E3096;--green:#22A45D;
+  --grad:linear-gradient(135deg,#2E4EC4,#8D68FA);
+  --hero:radial-gradient(120% 120% at 15% 0%,#3B1F7A 0%,#301667 40%,#1C0F3D 100%);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'Funnel Display',system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.sg{font-family:'Space Grotesk',system-ui,sans-serif}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* En-tête */
+.top{background:var(--hero);color:#fff;position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;background:url('assets/site-pattern-3.svg') no-repeat center/contain;opacity:.35;pointer-events:none}
+.top .bar{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.top .bar img{height:30px}
+.step-dots{display:flex;gap:6px}
+.step-dots span{width:28px;height:6px;border-radius:999px;background:rgba(255,255,255,.22);transition:background .3s}
+.step-dots span.on{background:var(--violet)}
+.hero{padding:26px 0 46px;position:relative;z-index:1;max-width:660px}
+.eyebrow{font-family:'Space Grotesk';font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.top .eyebrow{color:#C5B8FF}
+.hero h1{font-size:44px;line-height:1.05;letter-spacing:-.02em;margin:10px 0 14px}
+.hero h1 em{font-style:normal;color:var(--corail)}
+.hero p{color:var(--lav);font-size:18px;margin:0}
+
+/* Écrans */
+main{padding:44px 0 70px}
+.screen{display:none;animation:fade .35s ease}
+.screen.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen{animation:none}}
+.screen h2{font-size:30px;letter-spacing:-.02em;color:var(--indigo);margin:6px 0 6px}
+.lede{color:var(--muted);font-size:17px;margin:0 0 24px}
+
+/* Formulaire */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label.f{display:block;font-size:14px;font-weight:500;color:var(--indigo)}
+label.f input,label.f select{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink);background:#fff}
+label.f input:focus,label.f select:focus{outline:2px solid var(--violet);border-color:transparent}
+.err{color:var(--corail);font-size:14px;min-height:20px;margin-top:10px}
+
+/* Tuiles départements */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{position:relative;text-align:left;border:1px solid var(--line);background:#fff;border-radius:22px;padding:18px 16px 16px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(48,22,103,.09);border-color:#E3DBFB}
+.tile img{width:52px;height:52px;border-radius:999px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(30,16,80,.18)}
+.tile .n{display:block;font-family:'Space Grotesk';font-weight:500;color:var(--indigo);margin-top:12px;line-height:1.2}
+.tile .e{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.tile .ck{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;color:#fff;font-size:14px}
+.tile.sel{border-color:var(--violet);background:var(--lilac)}
+.tile.sel .ck{background:var(--violet);border-color:var(--violet)}
+
+/* Questions par département */
+.dept{border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:18px}
+.dept-h{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.dept-h img{width:46px;height:46px;border-radius:999px;object-fit:cover;box-shadow:0 2px 8px rgba(30,16,80,.18)}
+.dept-h h3{margin:0;color:var(--indigo);font-size:20px}
+.dept-h span{color:var(--muted);font-size:14px}
+.task{border-top:1px solid var(--line);padding:12px 0}
+.task:first-of-type{border-top:0}
+.task-row{display:flex;align-items:center;gap:12px;background:none;border:0;padding:0;width:100%;text-align:left;color:var(--ink)}
+.box{flex:0 0 22px;height:22px;border-radius:7px;border:1.5px solid #D3CBF3;display:grid;place-items:center;color:#fff;font-size:13px}
+.task.sel .box{background:var(--violet);border-color:var(--violet)}
+.chips{display:none;flex-wrap:wrap;gap:8px;margin:10px 0 2px 34px}
+.task.sel .chips{display:flex}
+.chips small{width:100%;color:var(--muted);font-size:13px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:14px;color:var(--ink);transition:all .15s}
+.chip:hover{border-color:var(--violet);color:var(--violet)}
+.chip.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.tools{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.tools p{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.tools .chips{display:flex;margin:0}
+
+/* Boutons */
+.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:14px 26px;font-weight:600;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .18s,box-shadow .18s}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(141,104,250,.35)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(141,104,250,.45)}
+.btn-g{background:none;border:1px solid var(--line);color:var(--indigo)}
+.btn-g:hover{border-color:var(--violet);color:var(--violet)}
+.btn-w{background:#fff;color:var(--indigo)}
+
+/* Résultat */
+.kpis{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin:8px 0 26px}
+.kpi{border-radius:22px;padding:22px}
+.kpi.dark{background:var(--hero);color:#fff}
+.kpi.soft{background:var(--lilac)}
+.kpi .big{font-family:'Space Grotesk';font-weight:700;font-size:56px;line-height:1;letter-spacing:-.02em}
+.kpi .big small{font-size:18px;font-weight:500;margin-left:4px}
+.kpi.dark .big{color:#fff}
+.kpi.soft .big{color:var(--indigo)}
+.kpi p{margin:8px 0 0;font-size:15px}
+.kpi.dark p{color:var(--lav)}
+.kpi.soft p{color:var(--muted)}
+.sec-t{font-size:22px;color:var(--indigo);margin:34px 0 6px}
+.sec-l{color:var(--muted);margin:0 0 16px}
+.bars{display:grid;gap:10px}
+.barrow{display:grid;grid-template-columns:190px 1fr 70px;gap:12px;align-items:center;font-size:15px}
+.track{height:14px;background:var(--lilac);border-radius:999px;overflow:hidden}
+.fill{height:100%;border-radius:999px;background:var(--grad);width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.barrow b{font-family:'Space Grotesk';color:var(--indigo);text-align:right}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain{border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pain .rank{font-family:'Space Grotesk';font-weight:700;color:var(--violet);font-size:13px;letter-spacing:.14em}
+.pain h4{margin:0;font-family:'Space Grotesk';font-weight:500;color:var(--indigo);font-size:18px;line-height:1.25}
+.pain .h{font-size:14px;color:var(--corail);font-weight:600}
+.pain p{margin:0;color:var(--muted);font-size:15px}
+.pain .who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:14px}
+.pain .who img{width:34px;height:34px;border-radius:999px;object-fit:cover}
+.experts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.xcard{border-radius:22px;padding:22px;background:var(--indigo);color:#fff;position:relative;overflow:hidden}
+.xcard:nth-child(2){background:var(--violet-deep)}
+.xcard:nth-child(3){background:var(--violet)}
+.xcard img{width:64px;height:64px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,.7)}
+.xcard h4{margin:12px 0 2px;font-family:'Space Grotesk';font-size:20px}
+.xcard .m{color:var(--lav);font-size:14px}
+.xcard:nth-child(3) .m{color:#fff}
+.xcard ul{margin:12px 0 0;padding-left:18px;font-size:14px}
+.xcard .hh{position:absolute;right:18px;top:18px;font-family:'Space Grotesk';font-weight:700;font-size:22px}
+.xcard .hh small{font-size:12px;font-weight:500}
+.offer{margin-top:30px;border-radius:28px;background:var(--hero);color:#fff;padding:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden}
+.offer h3{margin:6px 0 10px;font-size:28px;letter-spacing:-.02em}
+.offer p{color:var(--lav);margin:0}
+.offer .cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.note{font-size:13px;color:var(--grey2);margin-top:18px}
+.stack{display:flex}
+.stack img{width:42px;height:42px;border-radius:999px;object-fit:cover;border:2px solid #fff;margin-left:-10px;box-shadow:0 2px 8px rgba(30,16,80,.18)}
+.stack img:first-child{margin-left:0}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--grey2);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+
+@media (max-width:860px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .kpis,.pains,.experts{grid-template-columns:1fr}
+  .offer{grid-template-columns:1fr}
+  .barrow{grid-template-columns:120px 1fr 56px;font-size:14px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .grid2{grid-template-columns:1fr}
+  .hero h1{font-size:34px}
+  .screen h2{font-size:25px}
+  .kpi .big{font-size:46px}
+  .top .bar img{height:24px}
+  .step-dots span{width:18px}
+  .chips{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <img src="assets/logo/yelema-logo-blanc.png" alt="Yelema">
+      <div class="step-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="hero">
+      <div class="eyebrow">Le Déclic</div>
+      <h1>Voyez où votre entreprise <em>perd du temps</em>, en trois minutes.</h1>
+      <p>Choisissez vos services, cochez ce qui vous coûte des heures. Le Déclic vous montre aussitôt vos priorités et l'Expert IA qui reprend chaque tâche.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 1. Vous -->
+  <section class="screen on" id="s1">
+    <div class="eyebrow">Étape 1 sur 3</div>
+    <h2>Faisons connaissance.</h2>
+    <p class="lede">Votre diagnostic vous est adressé à cette adresse.</p>
+    <div class="grid2">
+      <label class="f">Prénom et nom<input id="nom" autocomplete="name" placeholder="Awa Koné"></label>
+      <label class="f">Email professionnel<input id="email" type="email" autocomplete="email" placeholder="awa@entreprise.ci"></label>
+      <label class="f">Entreprise<input id="entreprise" autocomplete="organization" placeholder="Nom de votre entreprise"></label>
+      <label class="f">Votre fonction<input id="fonction" autocomplete="organization-title" placeholder="Directrice financière"></label>
+      <label class="f">Taille de l'entreprise
+        <select id="taille"><option value="">Choisir</option><option>Moins de 10 personnes</option><option>10 à 49 personnes</option><option>50 à 249 personnes</option><option>250 personnes et plus</option></select>
+      </label>
+      <label class="f">Secteur
+        <select id="secteur"><option value="">Choisir</option><option>Commerce et distribution</option><option>Banque, microfinance et assurance</option><option>Industrie et production</option><option>Agro-industrie</option><option>Transport et logistique</option><option>Santé</option><option>Éducation et formation</option><option>Services professionnels</option><option>Tech et télécoms</option><option>Hôtellerie et restauration</option><option>Secteur public</option><option>Autre</option></select>
+      </label>
+    </div>
+    <div class="err" id="err1"></div>
+    <div class="actions"><span></span><button class="btn btn-p" data-go="2">Choisir mes services →</button></div>
+  </section>
+
+  <!-- 2. Départements -->
+  <section class="screen" id="s2">
+    <div class="eyebrow">Étape 2 sur 3</div>
+    <h2>Quels services voulez-vous soulager ?</h2>
+    <p class="lede">Choisissez-en un ou plusieurs. Chaque service a son Expert IA.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="err" id="err2"></div>
+    <div class="actions"><button class="btn btn-g" data-go="1">← Retour</button><button class="btn btn-p" data-go="3">Continuer →</button></div>
+  </section>
+
+  <!-- 3. Douleurs -->
+  <section class="screen" id="s3">
+    <div class="eyebrow">Étape 3 sur 3</div>
+    <h2>Où perdez-vous du temps ?</h2>
+    <p class="lede">Cochez les tâches qui vous coûtent le plus, puis dites combien d'heures elles prennent par semaine, toute l'équipe confondue.</p>
+    <div id="depts"></div>
+    <div class="err" id="err3"></div>
+    <div class="actions"><button class="btn btn-g" data-go="2">← Retour</button><button class="btn btn-p" data-go="4">Voir mon diagnostic →</button></div>
+  </section>
+
+  <!-- 4. Résultat -->
+  <section class="screen" id="s4">
+    <div class="eyebrow" id="r-eyebrow">Votre diagnostic</div>
+    <h2 id="r-titre">Voici ce que Le Déclic a trouvé.</h2>
+    <p class="lede" id="r-lede"></p>
+    <div class="kpis">
+      <div class="kpi dark"><div class="big" id="k-perdu">0<small>h</small></div><p>par semaine sur les tâches que vous avez cochées.</p></div>
+      <div class="kpi soft"><div class="big" id="k-repris">0<small>h</small></div><p>qu'un Expert IA peut reprendre chaque semaine.</p></div>
+      <div class="kpi soft"><div class="big" id="k-jours">0<small>jours</small></div><p>de travail rendus à votre équipe chaque mois.</p></div>
+    </div>
+
+    <h3 class="sec-t">Où part votre temps.</h3>
+    <p class="sec-l">Heures déclarées par service, chaque semaine.</p>
+    <div class="bars" id="bars"></div>
+
+    <h3 class="sec-t">Vos trois priorités.</h3>
+    <p class="sec-l">Les tâches qui vous coûtent le plus, et ce que l'Expert IA en fait.</p>
+    <div class="pains" id="pains"></div>
+
+    <h3 class="sec-t">Les Experts IA faits pour vous.</h3>
+    <p class="sec-l">Classés selon le temps qu'ils vous rendent.</p>
+    <div class="experts" id="experts"></div>
+
+    <div class="offer">
+      <div>
+        <div class="eyebrow" style="color:#C5B8FF">Votre démonstration</div>
+        <h3 id="o-titre">Voyons vos priorités en démonstration.</h3>
+        <p id="o-texte">En une heure, nous montrons l'Expert IA sur votre tâche la plus coûteuse, dans vos outils.</p>
+      </div>
+      <div class="cta">
+        <div class="stack" id="o-stack"></div>
+        <a class="btn btn-w" id="o-cal" href="https://calendly.com/leslie_mstudio/meeting-with-mstudio" target="_blank" rel="noopener">Réserver ma démonstration →</a>
+        <a class="btn btn-g" style="color:#fff;border-color:rgba(255,255,255,.35)" id="o-mail" href="#">Recevoir mon diagnostic par email</a>
+      </div>
+    </div>
+    <p class="note" id="note"></p>
+    <div class="actions"><button class="btn btn-g" data-go="3">← Modifier mes réponses</button><button class="btn btn-g" id="restart">Recommencer</button></div>
+  </section>
+</main>
+
+<footer><div class="wrap">Yelema, votre entreprise, décuplée par l'IA. · contact@yelema.ai</div></footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  const D = window.DECLIC, $ = s => document.querySelector(s);
+  const st = { depts: new Set(), taches: {}, outils: {} }; // taches[id] = heures
+  const parId = {}; D.departements.forEach(d => d.taches.forEach(t => parId[t.id] = { t, d }));
+  const img = f => 'assets/experts/' + f;
+  const nb = x => (Math.round(x * 10) / 10).toString().replace('.', ',');
+
+  // Tuiles
+  $('#tiles').innerHTML = D.departements.map(d => `
+    <button class="tile" data-d="${d.id}" aria-pressed="false">
+      <span class="ck">✓</span><img src="${img(d.photo)}" alt="">
+      <span class="n">${d.nom}</span><span class="e">${d.expert}, ${d.metier.toLowerCase()}</span>
+    </button>`).join('');
+  $('#tiles').addEventListener('click', e => {
+    const b = e.target.closest('.tile'); if (!b) return;
+    const id = b.dataset.d;
+    st.depts.has(id) ? st.depts.delete(id) : st.depts.add(id);
+    b.classList.toggle('sel', st.depts.has(id)); b.setAttribute('aria-pressed', st.depts.has(id));
+  });
+
+  function rendreDepts(){
+    $('#depts').innerHTML = D.departements.filter(d => st.depts.has(d.id)).map(d => `
+      <div class="dept">
+        <div class="dept-h"><img src="${img(d.photo)}" alt=""><div><h3>${d.nom}</h3><span>Avec ${d.expert}, ${d.metier.toLowerCase()}</span></div></div>
+        ${d.taches.map(t => `
+          <div class="task ${t.id in st.taches ? 'sel' : ''}" data-t="${t.id}">
+            <button class="task-row" type="button"><span class="box">✓</span><span>${t.label}</span></button>
+            <div class="chips"><small>Combien d'heures par semaine ?</small>
+              ${D.temps.map(x => `<button type="button" class="chip ${st.taches[t.id] === x.heures ? 'on' : ''}" data-h="${x.heures}">${x.label}</button>`).join('')}
+            </div>
+          </div>`).join('')}
+        <div class="tools"><p>Les outils que ce service utilise :</p><div class="chips">
+          ${d.outils.map(o => `<button type="button" class="chip ${(st.outils[d.id] || []).includes(o) ? 'on' : ''}" data-o="${o}" data-d="${d.id}">${o}</button>`).join('')}
+        </div></div>
+      </div>`).join('');
+  }
+  $('#depts').addEventListener('click', e => {
+    const o = e.target.closest('[data-o]');
+    if (o) { const l = st.outils[o.dataset.d] = st.outils[o.dataset.d] || []; const i = l.indexOf(o.dataset.o); i < 0 ? l.push(o.dataset.o) : l.splice(i, 1); o.classList.toggle('on'); return; }
+    const task = e.target.closest('.task'); if (!task) return;
+    const id = task.dataset.t, chip = e.target.closest('[data-h]');
+    if (chip) { st.taches[id] = +chip.dataset.h; task.querySelectorAll('[data-h]').forEach(c => c.classList.toggle('on', c === chip)); return; }
+    if (e.target.closest('.task-row')) {
+      if (id in st.taches) delete st.taches[id]; else st.taches[id] = 0;
+      task.classList.toggle('sel', id in st.taches);
+      task.querySelectorAll('[data-h]').forEach(c => c.classList.remove('on'));
+    }
+  });
+
+  function resultat(){
+    const prenom = ($('#nom').value.trim().split(' ')[0]) || '';
+    const ent = $('#entreprise').value.trim();
+    const liste = Object.entries(st.taches).filter(([id, h]) => h > 0 && st.depts.has(parId[id].d.id))
+      .map(([id, h]) => ({ ...parId[id], h })).sort((a, b) => b.h - a.h);
+    const total = liste.reduce((s, x) => s + x.h, 0), repris = total * D.partReprise;
+    $('#r-titre').textContent = prenom ? `${prenom}, voici ce que Le Déclic a trouvé.` : 'Voici ce que Le Déclic a trouvé.';
+    $('#r-lede').textContent = `${ent || 'Votre entreprise'} perd du temps sur ${liste.length} tâche${liste.length > 1 ? 's' : ''} répétitive${liste.length > 1 ? 's' : ''}. Voici où, et qui peut les reprendre.`;
+    $('#k-perdu').innerHTML = nb(total) + '<small>h</small>';
+    $('#k-repris').innerHTML = nb(repris) + '<small>h</small>';
+    $('#k-jours').innerHTML = nb(repris * 4.33 / 8) + '<small>jours</small>';
+
+    const parD = {}; liste.forEach(x => { parD[x.d.id] = parD[x.d.id] || { d: x.d, h: 0, t: [] }; parD[x.d.id].h += x.h; parD[x.d.id].t.push(x.t); });
+    const ds = Object.values(parD).sort((a, b) => b.h - a.h), max = ds.length ? ds[0].h : 1;
+    $('#bars').innerHTML = ds.map(x => `<div class="barrow"><span>${x.d.nom}</span><div class="track"><div class="fill" data-w="${x.h / max * 100}"></div></div><b>${nb(x.h)} h</b></div>`).join('');
+    requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'), 60));
+
+    $('#pains').innerHTML = liste.slice(0, 3).map((x, i) => `
+      <div class="pain"><div class="rank">PRIORITÉ ${i + 1}</div><h4>${x.t.label}</h4>
+        <div class="h">${nb(x.h)} h par semaine aujourd'hui</div><p>${x.t.fait}</p>
+        <div class="who"><img src="${img(x.d.photo)}" alt=""><span><b>${x.d.expert}</b>, ${x.d.metier.toLowerCase()}</span></div></div>`).join('');
+
+    $('#experts').innerHTML = ds.slice(0, 3).map(x => `
+      <div class="xcard"><div class="hh">${nb(x.h * D.partReprise)}<small> h rendues</small></div>
+        <img src="${img(x.d.photo)}" alt=""><h4>${x.d.expert}</h4><div class="m">${x.d.metier}</div>
+        <ul>${x.t.slice(0, 3).map(t => `<li>${t.label}</li>`).join('')}</ul></div>`).join('');
+
+    const top = ds.slice(0, 2).map(x => x.d), p1 = liste[0];
+    $('#o-stack').innerHTML = top.map(d => `<img src="${img(d.photo)}" alt="${d.expert}">`).join('');
+    $('#o-titre').textContent = top.length > 1 ? `Commencez avec ${top[0].expert} et ${top[1].expert}.` : `Commencez avec ${top[0].expert}.`;
+    $('#o-texte').textContent = `En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${p1.t.label.toLowerCase()} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].join(', ') + ')' : ''}. Deux Experts IA pour 300 000 F par mois, Djénéba incluse.`;
+    $('#note').textContent = `Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps que vous avez déclaré ; un mois compte 4,33 semaines et une journée 8 heures.`;
+
+    const lignes = [`Diagnostic Le Déclic : ${ent}`, `${$('#nom').value} (${$('#fonction').value}), ${$('#email').value}`, `${$('#taille').value}, ${$('#secteur').value}`, '',
+      `Temps perdu : ${nb(total)} h par semaine ; repris par un Expert IA : ${nb(repris)} h`, '',
+      ...liste.map(x => `- ${x.d.nom} : ${x.t.label} (${nb(x.h)} h)`), '',
+      ...Object.entries(st.outils).filter(([, l]) => l.length).map(([d, l]) => `Outils ${D.departements.find(x => x.id === d).nom} : ${l.join(', ')}`)];
+    $('#o-mail').href = 'mailto:contact@yelema.ai?cc=' + encodeURIComponent($('#email').value) + '&subject=' + encodeURIComponent('Mon diagnostic Le Déclic, ' + ent) + '&body=' + encodeURIComponent(lignes.join('\n'));
+  }
+
+  function aller(n){
+    if (n === 2) {
+      const req = ['nom', 'email', 'entreprise', 'fonction', 'taille', 'secteur'].filter(k => !$('#' + k).value.trim());
+      const okMail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('#email').value.trim());
+      if (req.length || !okMail) { $('#err1').textContent = req.length ? 'Merci de remplir tous les champs.' : "L'adresse email semble incomplète."; return; }
+      $('#err1').textContent = '';
+    }
+    if (n === 3) { if (!st.depts.size) { $('#err2').textContent = 'Choisissez au moins un service.'; return; } $('#err2').textContent = ''; rendreDepts(); }
+    if (n === 4) {
+      const coch = Object.entries(st.taches).filter(([id]) => st.depts.has(parId[id].d.id));
+      if (!coch.length) { $('#err3').textContent = 'Cochez au moins une tâche.'; return; }
+      if (coch.some(([, h]) => !h)) { $('#err3').textContent = "Indiquez le nombre d'heures pour chaque tâche cochée."; return; }
+      $('#err3').textContent = ''; resultat();
+    }
+    document.querySelectorAll('.screen').forEach((s, i) => s.classList.toggle('on', i === n - 1));
+    document.querySelectorAll('.step-dots span').forEach((s, i) => s.classList.toggle('on', i < n));
+    window.scrollTo({ top: n === 1 ? 0 : document.querySelector('main').offsetTop - 10, behavior: 'smooth' });
+  }
+  document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) aller(+g.dataset.go); });
+  $('#restart').addEventListener('click', () => location.reload());
+})();
+</script>
+</body>
+</html>
