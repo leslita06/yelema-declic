@@ -15,7 +15,7 @@
   --lilac:#F3EFFE;--lilac2:#EFE9FF;--bleu:#2E4EC4;--corail:#E4765A;--corailp:#FBE7E2;--ink:#241A3A;--muted:#6B6580;--grey2:#938DA8;--line:#ECE8FA;
   --card-dark:#3D227E;--border-dark:#4E3096;--green:#22A45D;
   --grad:linear-gradient(135deg,#2E4EC4,#8D68FA);
-  --hero:radial-gradient(120% 120% at 15% 0%,#3B1F7A 0%,#301667 40%,#1C0F3D 100%);
+  --hero:linear-gradient(160deg,#FFFFFF 0%,#F3EFFE 50%,#E0E1FF 100%);--vif:linear-gradient(135deg,#2E4EC4 0%,#6F4BDF 55%,#8D68FA 100%);
   --sh:0 16px 40px rgba(48,22,103,.10);--sh2:0 24px 60px rgba(48,22,103,.18);
 }
 *{box-sizing:border-box}
@@ -29,10 +29,10 @@ button{font:inherit;cursor:pointer;color:inherit}
 .eyebrow{font-family:'Space Grotesk';font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
 
 /* Barre du haut */
-.top{position:sticky;top:0;z-index:20;background:rgba(28,15,61,.92);backdrop-filter:blur(10px);color:#fff}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);color:var(--indigo);border-bottom:1px solid var(--line)}
 .top .in{display:flex;align-items:center;gap:16px;height:64px}
 .top img.logo{height:26px}
-.prog{flex:1;height:8px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;max-width:420px;margin-left:auto}
+.prog{flex:1;height:8px;border-radius:999px;background:var(--lilac2);overflow:hidden;max-width:420px;margin-left:auto}
 .prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
 .mini{width:34px;height:34px}
 .mini rect{transition:fill .4s}
@@ -48,22 +48,22 @@ button{font:inherit;cursor:pointer;color:inherit}
 .lede{color:var(--muted);font-size:17px;margin:0 0 26px;max-width:640px}
 
 /* Accueil */
-.hero{background:var(--hero);color:#fff;border-radius:0 0 40px 40px;padding:40px 0 70px;position:relative;overflow:hidden}
+.hero{background:var(--hero);color:var(--indigo);border-bottom:1px solid var(--line);border-radius:0 0 40px 40px;padding:40px 0 70px;position:relative;overflow:hidden}
 .hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
 .hero h1{font-size:52px;line-height:1.02;margin:12px 0 16px}
 .hero h1 em{font-style:normal;color:var(--corail)}
-.hero p{color:var(--lav);font-size:19px;margin:0 0 28px}
+.hero p{color:#4A4560;font-size:19px;margin:0 0 28px}
 .perks{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px}
-.perks > span{display:flex;align-items:center;gap:8px;color:#fff;font-size:15px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:999px}
-.perks .ic{width:18px;height:18px;color:var(--lav)}
-.bloom{width:100%;max-width:380px;justify-self:center;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+.perks > span{display:flex;align-items:center;gap:8px;color:var(--indigo);font-weight:500;font-size:15px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 12px rgba(48,22,103,.06);padding:8px 14px;border-radius:999px}
+.perks .ic{width:18px;height:18px;color:var(--violet)}
+.bloom{width:100%;max-width:380px;justify-self:center;filter:drop-shadow(0 24px 40px rgba(74,41,156,.28))}
 .bloom .p{transform-origin:240px 240px;transform:scale(0) rotate(-60deg);animation:open 1.1s cubic-bezier(.2,.9,.25,1.2) forwards}
 @keyframes open{to{transform:scale(1) rotate(0)}}
 .bloom .core{transform-origin:240px 240px;animation:pulse 3s ease-in-out 1.4s infinite}
 @keyframes pulse{50%{transform:scale(1.12)}}
 .bloom .spin{transform-origin:240px 240px;animation:spin 40s linear 1.4s infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.floaty{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;color:var(--indigo);border-radius:999px;padding:8px 14px 8px 8px;font-size:14px;font-weight:600;box-shadow:var(--sh2);animation:float 5s ease-in-out infinite}
+.floaty{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;color:var(--indigo);border-radius:999px;padding:8px 14px 8px 8px;font-size:14px;font-weight:600;border:1px solid var(--line);box-shadow:var(--sh2);animation:float 5s ease-in-out infinite}
 .floaty img{width:30px;height:30px;border-radius:999px;object-fit:cover}
 @keyframes float{50%{transform:translateY(-10px)}}
 
@@ -160,17 +160,17 @@ button{font:inherit;cursor:pointer;color:inherit}
 .steps-a .ic{width:20px;height:20px;color:var(--green)}
 
 /* Résultat */
-.r-hero{background:var(--hero);color:#fff;border-radius:32px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
-.r-hero::after{content:"";position:absolute;right:-60px;bottom:-90px;width:300px;height:300px;background:url('assets/site-pattern-3.svg') no-repeat center/contain;opacity:.25}
+.r-hero{background:var(--hero);color:var(--indigo);border:1px solid var(--line);border-radius:32px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.r-hero::after{content:"";position:absolute;right:-60px;bottom:-90px;width:300px;height:300px;background:url('assets/site-pattern-3.svg') no-repeat center/contain;opacity:.1}
 .ring{position:relative;width:190px;height:190px}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .ring .v b{font-family:'Space Grotesk';font-size:56px;line-height:1;display:block}
-.ring .v small{color:var(--lav);font-size:14px}
-.r-hero h2{color:#fff;font-size:34px;margin:6px 0 10px}
-.r-hero .lvl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 14px;font-weight:600;color:#fff}
+.ring .v small{color:var(--muted);font-size:14px}
+.r-hero h2{color:var(--indigo);font-size:34px;margin:6px 0 10px}
+.r-hero .lvl{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:600;color:var(--indigo)}
 .r-hero .lvl .ic{width:18px;height:18px;color:var(--corail)}
-.r-hero p{color:var(--lav);margin:12px 0 0;position:relative;z-index:1}
+.r-hero p{color:#4A4560;margin:12px 0 0;position:relative;z-index:1}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 8px}
 .kpi{background:#fff;border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sh)}
 .kpi .chip{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--grad);flex:0 0 auto}
@@ -200,25 +200,25 @@ button{font:inherit;cursor:pointer;color:inherit}
 .pain .who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
 .pain .who img{width:36px;height:36px;border-radius:999px;object-fit:cover}
 .experts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.xcard{border-radius:24px;padding:22px;background:var(--indigo);color:#fff;position:relative;overflow:hidden;box-shadow:var(--sh2);transition:transform .2s}
+.xcard{border-radius:24px;padding:22px;background:var(--vif);color:#fff;position:relative;overflow:hidden;box-shadow:var(--sh2);transition:transform .2s}
 .xcard:hover{transform:translateY(-4px)}
-.xcard:nth-child(2){background:var(--violet-deep)}.xcard:nth-child(3){background:var(--violet)}
+.xcard:nth-child(2){background:linear-gradient(135deg,#6F4BDF,#A486FB)}.xcard:nth-child(3){background:linear-gradient(135deg,#E4765A,#F0A08A)}
 .xcard .top-x{display:flex;justify-content:space-between;align-items:flex-start}
 .xcard img{width:72px;height:72px;border-radius:999px;object-fit:cover;border:3px solid rgba(255,255,255,.75)}
 .match{width:64px;height:64px;position:relative}
 .match svg{width:100%;height:100%;transform:rotate(-90deg)}
 .match b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Space Grotesk';font-size:16px}
 .xcard h4{margin:14px 0 2px;font-size:22px}
-.xcard .m{color:var(--lav);font-size:14px}
+.xcard .m{color:rgba(255,255,255,.85);font-size:14px}
 .xcard:nth-child(3) .m{color:#fff}
 .xcard ul{list-style:none;margin:14px 0 0;padding:0;font-size:14px;display:grid;gap:6px}
 .xcard li{display:flex;gap:8px;align-items:flex-start}
-.xcard li .ic{width:16px;height:16px;margin-top:2px;color:var(--lav)}
+.xcard li .ic{width:16px;height:16px;margin-top:2px;color:#fff}
 .xcard .gain{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;display:flex;gap:8px;align-items:center}
 .xcard .gain .ic{width:16px;height:16px}
-.offer{margin-top:36px;border-radius:32px;background:var(--hero);color:#fff;padding:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.offer{margin-top:36px;border-radius:32px;background:var(--vif);color:#fff;padding:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
 .offer h3{margin:8px 0 10px;font-size:30px}
-.offer p{color:var(--lav);margin:0}
+.offer p{color:rgba(255,255,255,.9);margin:0}
 .offer .cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start;position:relative;z-index:1}
 .stack{display:flex;margin-bottom:6px}
 .stack img{width:48px;height:48px;border-radius:999px;object-fit:cover;border:3px solid #fff;margin-left:-12px}
@@ -247,7 +247,7 @@ footer{padding:22px 0 30px;color:var(--grey2);font-size:12px;text-transform:uppe
 </head>
 <body>
 <header class="top"><div class="wrap in">
-  <img class="logo" src="assets/logo/yelema-logo-blanc.png" alt="Yelema">
+  <img class="logo" src="assets/logo/yelema-logo.png" alt="Yelema">
   <div class="prog" aria-hidden="true"><i id="prog"></i></div>
   <svg class="mini" id="mini" viewBox="0 0 480 480" aria-hidden="true"></svg>
 </div></header>
@@ -273,7 +273,7 @@ const PET = ['#2E4EC4', '#4A299C', '#8D68FA', '#6F4BDF', '#A486FB', '#301667'];
 function fleur(cls, couleurs, rayon){
   return [0,1,2,3,4,5].map(k => `<g transform="rotate(${30+k*60} 240 240)"><rect class="${cls}" x="${240-rayon/2}" y="12" width="${rayon}" height="236" rx="${rayon/2}" fill="${couleurs[k]}" style="animation-delay:${k*.12}s"/></g>`).join('');
 }
-function majMini(f){ document.getElementById('mini').innerHTML = [0,1,2,3,4,5].map(k => `<rect x="200" y="20" width="80" height="220" rx="40" fill="${k < Math.round(f*6) ? PET[k] : 'rgba(255,255,255,.18)'}" transform="rotate(${30+k*60} 240 240)"/>`).join(''); }
+function majMini(f){ document.getElementById('mini').innerHTML = [0,1,2,3,4,5].map(k => `<rect x="200" y="20" width="80" height="220" rx="40" fill="${k < Math.round(f*6) ? PET[k] : '#E0E1FF'}" transform="rotate(${30+k*60} 240 240)"/>`).join(''); }
 
 // Écrans : construits à la volée, les écrans de tâches suivent les services choisis.
 function ecrans(){
@@ -298,10 +298,10 @@ const tete = (icone, eyebrow, titre, lede) => `<div class="wrap"><div class="q-h
 
 const VUES = {
   accueil: () => `<div class="hero" style="margin-top:-40px"><div class="wrap in">
-      <div><div class="eyebrow" style="color:#C5B8FF">Le Déclic, par Yelema</div>
+      <div><div class="eyebrow">Le Déclic, par Yelema</div>
         <h1>Voyez où votre entreprise <em>perd du temps</em>.</h1>
         <p>Une dizaine de clics, trois minutes. Le Déclic vous montre vos tâches les plus coûteuses, votre note de maturité IA et les Experts IA qui reprennent le travail.</p>
-        <button class="btn btn-w btn-big" data-a="suiv">${ic('sparkles')} Faire mon Déclic</button>
+        <button class="btn btn-p btn-big" data-a="suiv">${ic('sparkles')} Faire mon Déclic</button>
         <div class="perks"><span>${ic('timer')} 3 minutes</span><span>${ic('gauge')} Résultat immédiat</span><span>${ic('shield-check')} Gratuit, sans engagement</span></div>
       </div>
       <div style="position:relative">
@@ -368,9 +368,9 @@ function resultat(){
   const top = R.ds.slice(0, 2).map(x => x.d), p1 = R.liste[0];
   return `<div class="wrap">
     <div class="r-hero">
-      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="12"/><circle id="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#gr)" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/><defs><linearGradient id="gr"><stop offset="0" stop-color="#E4765A"/><stop offset="1" stop-color="#8D68FA"/></linearGradient></defs></svg>
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E0E1FF" stroke-width="12"/><circle id="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#gr)" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/><defs><linearGradient id="gr"><stop offset="0" stop-color="#E4765A"/><stop offset="1" stop-color="#8D68FA"/></linearGradient></defs></svg>
         <div class="v"><div><b class="cnt" data-to="${R.note}">0</b><small>sur 100</small></div></div></div>
-      <div style="position:relative;z-index:1"><div class="eyebrow" style="color:#C5B8FF">Votre note de maturité IA</div>
+      <div style="position:relative;z-index:1"><div class="eyebrow">Votre note de maturité IA</div>
         <h2>${prenom ? esc(prenom) + ', votre' : 'Votre'} Déclic est prêt.</h2>
         <span class="lvl">${ic('rocket')} ${R.niv.nom}</span><p>${R.niv.texte}</p></div>
     </div>
@@ -391,7 +391,7 @@ function resultat(){
       <h4>${x.d.expert}</h4><div class="m">${x.d.metier}</div>
       <ul>${x.t.slice(0, 3).map(t => `<li>${ic('check')}${t.label}</li>`).join('')}</ul>
       <div class="gain">${ic('timer')} ${nb(x.h * D.partReprise)} h rendues chaque semaine</div></div>`; }).join('')}</div>
-    <div class="offer"><div><div class="eyebrow" style="color:#C5B8FF">${ic('target')} Votre priorité : ${obj ? obj.label.toLowerCase() : ''}</div>
+    <div class="offer"><div><div class="eyebrow" style="color:#fff">${ic('target')} Votre priorité : ${obj ? obj.label.toLowerCase() : ''}</div>
       <h3>${top.length > 1 ? `Commencez avec ${top[0].expert} et ${top[1].expert}.` : `Commencez avec ${top[0].expert}.`}</h3>
       <p>En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${p1.t.label.toLowerCase()} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].join(', ') + ')' : ''}. Deux Experts IA pour 300 000 F par mois, Djénéba incluse.</p></div>
       <div class="cta"><div class="stack">${top.map(d => `<img src="${ph(d.photo)}" alt="${d.expert}">`).join('')}<img src="${ph('av-chiefofstaff-sq.jpg')}" alt="Djénéba"></div>
