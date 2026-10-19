@@ -12,367 +12,432 @@
 @font-face{font-family:'Funnel Display';font-weight:300 800;font-display:swap;src:url('assets/fonts/FunnelDisplay-Variable.woff2') format('woff2')}
 :root{
   --indigo:#301667;--indigo2:#1C0F3D;--violet:#8D68FA;--violet-deep:#4A299C;--lav:#C5C4FF;--lavp:#E0E1FF;
-  --lilac:#F3EFFE;--bleu:#2E4EC4;--corail:#E4765A;--ink:#241A3A;--muted:#6B6580;--grey2:#938DA8;--line:#ECE8FA;
+  --lilac:#F3EFFE;--lilac2:#EFE9FF;--bleu:#2E4EC4;--corail:#E4765A;--corailp:#FBE7E2;--ink:#241A3A;--muted:#6B6580;--grey2:#938DA8;--line:#ECE8FA;
   --card-dark:#3D227E;--border-dark:#4E3096;--green:#22A45D;
   --grad:linear-gradient(135deg,#2E4EC4,#8D68FA);
   --hero:radial-gradient(120% 120% at 15% 0%,#3B1F7A 0%,#301667 40%,#1C0F3D 100%);
+  --sh:0 16px 40px rgba(48,22,103,.10);--sh2:0 24px 60px rgba(48,22,103,.18);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font-family:'Funnel Display',system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.sg{font-family:'Space Grotesk',system-ui,sans-serif}
-a{color:inherit}
-button{font:inherit;cursor:pointer}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-
-/* En-tête */
-.top{background:var(--hero);color:#fff;position:relative;overflow:hidden}
-.top::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;background:url('assets/site-pattern-3.svg') no-repeat center/contain;opacity:.35;pointer-events:none}
-.top .bar{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
-.top .bar img{height:30px}
-.step-dots{display:flex;gap:6px}
-.step-dots span{width:28px;height:6px;border-radius:999px;background:rgba(255,255,255,.22);transition:background .3s}
-.step-dots span.on{background:var(--violet)}
-.hero{padding:26px 0 46px;position:relative;z-index:1;max-width:660px}
+body{font-family:'Funnel Display',system-ui,sans-serif;color:var(--ink);background:#F7F5FE;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3,h4,.sg{font-family:'Space Grotesk',system-ui,sans-serif;letter-spacing:-.02em}
+button{font:inherit;cursor:pointer;color:inherit}
+.ic{display:inline-block;width:22px;height:22px;flex:0 0 auto}
+.ic svg{width:100%;height:100%;display:block}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
 .eyebrow{font-family:'Space Grotesk';font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
-.top .eyebrow{color:#C5B8FF}
-.hero h1{font-size:44px;line-height:1.05;letter-spacing:-.02em;margin:10px 0 14px}
-.hero h1 em{font-style:normal;color:var(--corail)}
-.hero p{color:var(--lav);font-size:18px;margin:0}
+
+/* Barre du haut */
+.top{position:sticky;top:0;z-index:20;background:rgba(28,15,61,.92);backdrop-filter:blur(10px);color:#fff}
+.top .in{display:flex;align-items:center;gap:16px;height:64px}
+.top img.logo{height:26px}
+.prog{flex:1;height:8px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;max-width:420px;margin-left:auto}
+.prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.mini{width:34px;height:34px}
+.mini rect{transition:fill .4s}
 
 /* Écrans */
-main{padding:44px 0 70px}
-.screen{display:none;animation:fade .35s ease}
-.screen.on{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.screen{animation:none}}
-.screen h2{font-size:30px;letter-spacing:-.02em;color:var(--indigo);margin:6px 0 6px}
-.lede{color:var(--muted);font-size:17px;margin:0 0 24px}
+.screen{display:none;padding:40px 0 60px;min-height:calc(100vh - 64px)}
+.screen.on{display:block;animation:enter .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.q-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.q-ic{width:52px;height:52px;border-radius:16px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px rgba(141,104,250,.35)}
+.q-ic .ic{width:26px;height:26px}
+.screen h2{font-size:32px;color:var(--indigo);margin:14px 0 6px;line-height:1.1}
+.lede{color:var(--muted);font-size:17px;margin:0 0 26px;max-width:640px}
+
+/* Accueil */
+.hero{background:var(--hero);color:#fff;border-radius:0 0 40px 40px;padding:40px 0 70px;position:relative;overflow:hidden}
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:52px;line-height:1.02;margin:12px 0 16px}
+.hero h1 em{font-style:normal;color:var(--corail)}
+.hero p{color:var(--lav);font-size:19px;margin:0 0 28px}
+.perks{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px}
+.perks > span{display:flex;align-items:center;gap:8px;color:#fff;font-size:15px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:999px}
+.perks .ic{width:18px;height:18px;color:var(--lav)}
+.bloom{width:100%;max-width:380px;justify-self:center;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+.bloom .p{transform-origin:240px 240px;transform:scale(0) rotate(-60deg);animation:open 1.1s cubic-bezier(.2,.9,.25,1.2) forwards}
+@keyframes open{to{transform:scale(1) rotate(0)}}
+.bloom .core{transform-origin:240px 240px;animation:pulse 3s ease-in-out 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.bloom .spin{transform-origin:240px 240px;animation:spin 40s linear 1.4s infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.floaty{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;color:var(--indigo);border-radius:999px;padding:8px 14px 8px 8px;font-size:14px;font-weight:600;box-shadow:var(--sh2);animation:float 5s ease-in-out infinite}
+.floaty img{width:30px;height:30px;border-radius:999px;object-fit:cover}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* Cartes à cliquer */
+.cards{display:grid;gap:14px}
+.c4{grid-template-columns:repeat(4,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c2{grid-template-columns:repeat(2,1fr)}
+.card{position:relative;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s,border-color .18s,background .18s;box-shadow:0 2px 0 rgba(48,22,103,.04)}
+.card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:#D9CCFD}
+.card:active{transform:scale(.98)}
+.card .chip{width:46px;height:46px;border-radius:14px;background:var(--lavp);color:var(--violet);display:grid;place-items:center;transition:all .2s}
+.card .t{font-family:'Space Grotesk';font-weight:500;color:var(--indigo);line-height:1.2}
+.card .s{font-size:13px;color:var(--muted)}
+.card .tick{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;color:#fff;transition:all .2s;transform:scale(.9)}
+.card .tick .ic{width:15px;height:15px}
+.card.sel{border-color:var(--violet);background:linear-gradient(180deg,#fff,var(--lilac));box-shadow:0 14px 34px rgba(141,104,250,.22)}
+.card.sel .chip{background:var(--grad);color:#fff}
+.card.sel .tick{background:var(--violet);border-color:var(--violet);transform:scale(1);animation:pop .3s}
+@keyframes pop{50%{transform:scale(1.3)}}
+.card .face{display:flex;align-items:center;gap:10px}
+.card .face img{width:46px;height:46px;border-radius:999px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(30,16,80,.18)}
+.card .face .chip{width:34px;height:34px;border-radius:11px;margin-left:-18px;margin-top:22px;border:2px solid #fff}
+.card .face .chip .ic{width:17px;height:17px}
 
 /* Formulaire */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-label.f{display:block;font-size:14px;font-weight:500;color:var(--indigo)}
-label.f input,label.f select{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink);background:#fff}
-label.f input:focus,label.f select:focus{outline:2px solid var(--violet);border-color:transparent}
-.err{color:var(--corail);font-size:14px;min-height:20px;margin-top:10px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:12px 16px;display:flex;gap:12px;align-items:center;transition:border-color .18s,box-shadow .18s}
+.fld:focus-within{border-color:var(--violet);box-shadow:0 0 0 4px rgba(141,104,250,.15)}
+.fld .ic{color:var(--violet)}
+.fld label{flex:1;font-size:12px;font-weight:600;color:var(--grey2);text-transform:uppercase;letter-spacing:.08em}
+.fld input{display:block;width:100%;border:0;outline:0;font:inherit;font-size:16px;color:var(--ink);background:none;padding:4px 0 0;text-transform:none;letter-spacing:0;font-weight:400}
 
-/* Tuiles départements */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.tile{position:relative;text-align:left;border:1px solid var(--line);background:#fff;border-radius:22px;padding:18px 16px 16px;transition:transform .18s,box-shadow .18s,border-color .18s}
-.tile:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(48,22,103,.09);border-color:#E3DBFB}
-.tile img{width:52px;height:52px;border-radius:999px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(30,16,80,.18)}
-.tile .n{display:block;font-family:'Space Grotesk';font-weight:500;color:var(--indigo);margin-top:12px;line-height:1.2}
-.tile .e{display:block;font-size:13px;color:var(--muted);margin-top:4px}
-.tile .ck{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;color:#fff;font-size:14px}
-.tile.sel{border-color:var(--violet);background:var(--lilac)}
-.tile.sel .ck{background:var(--violet);border-color:var(--violet)}
-
-/* Questions par département */
-.dept{border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:18px}
-.dept-h{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.dept-h img{width:46px;height:46px;border-radius:999px;object-fit:cover;box-shadow:0 2px 8px rgba(30,16,80,.18)}
-.dept-h h3{margin:0;color:var(--indigo);font-size:20px}
-.dept-h span{color:var(--muted);font-size:14px}
-.task{border-top:1px solid var(--line);padding:12px 0}
-.task:first-of-type{border-top:0}
-.task-row{display:flex;align-items:center;gap:12px;background:none;border:0;padding:0;width:100%;text-align:left;color:var(--ink)}
-.box{flex:0 0 22px;height:22px;border-radius:7px;border:1.5px solid #D3CBF3;display:grid;place-items:center;color:#fff;font-size:13px}
+/* Tâches */
+.task{background:#fff;border:1.5px solid var(--line);border-radius:20px;margin-bottom:12px;transition:all .2s;overflow:hidden}
+.task.sel{border-color:var(--violet);box-shadow:0 14px 34px rgba(141,104,250,.18)}
+.task-row{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;padding:16px 18px;text-align:left}
+.task-row .box{flex:0 0 26px;height:26px;border-radius:8px;border:1.5px solid #D3CBF3;display:grid;place-items:center;color:#fff;transition:all .2s}
+.task-row .box .ic{width:15px;height:15px}
 .task.sel .box{background:var(--violet);border-color:var(--violet)}
-.chips{display:none;flex-wrap:wrap;gap:8px;margin:10px 0 2px 34px}
-.task.sel .chips{display:flex}
-.chips small{width:100%;color:var(--muted);font-size:13px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:14px;color:var(--ink);transition:all .15s}
-.chip:hover{border-color:var(--violet);color:var(--violet)}
-.chip.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
-.tools{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
-.tools p{margin:0 0 8px;font-size:14px;color:var(--muted)}
-.tools .chips{display:flex;margin:0}
+.task-row span.l{font-weight:500;color:var(--indigo);font-size:16px}
+.hours{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 18px;max-height:0;opacity:0;transition:all .3s}
+.task.sel .hours{max-height:260px;opacity:1;padding:0 18px 16px}
+.hours .lab{grid-column:1/-1;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.hours .lab .ic{width:15px;height:15px;color:var(--corail)}
+.hb{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px 6px;font-size:15px;font-weight:600;color:var(--indigo);text-align:center;transition:all .15s}
+.hb b{display:block;font-family:'Space Grotesk';font-size:18px;color:var(--indigo)}
+.hb:hover{border-color:var(--violet)}
+.hb.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.hb.on b{color:#fff}
+.tools{margin-top:22px;background:#fff;border-radius:20px;padding:18px;border:1.5px dashed #D9CCFD}
+.tools p{margin:0 0 12px;font-weight:600;color:var(--indigo);display:flex;gap:8px;align-items:center}
+.tools p .ic{color:var(--violet)}
+.logos{display:flex;flex-wrap:wrap;gap:10px}
+.logo-b{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px 7px 8px;font-size:14px;transition:all .15s}
+.logo-b img{width:24px;height:24px;object-fit:contain}
+.logo-b.on{border-color:var(--violet);background:var(--lilac);box-shadow:0 6px 16px rgba(141,104,250,.2)}
+.exp-pill{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 16px 6px 6px;box-shadow:var(--sh);margin-bottom:18px}
+.exp-pill img{width:40px;height:40px;border-radius:999px;object-fit:cover}
+.exp-pill span{font-size:14px;color:var(--muted)}
+.exp-pill b{color:var(--indigo)}
 
-/* Boutons */
-.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap}
-.btn{border:0;border-radius:999px;padding:14px 26px;font-weight:600;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .18s,box-shadow .18s}
-.btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(141,104,250,.35)}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(141,104,250,.45)}
-.btn-g{background:none;border:1px solid var(--line);color:var(--indigo)}
+/* Maturité */
+.mq{background:#fff;border-radius:22px;padding:20px;margin-bottom:14px;border:1.5px solid var(--line)}
+.mq h3{display:flex;align-items:center;gap:12px;margin:0 0 14px;color:var(--indigo);font-size:19px}
+.mq h3 .chip{width:40px;height:40px;border-radius:12px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sc{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px 10px;font-size:14px;text-align:left;transition:all .15s;position:relative}
+.sc .dots{display:flex;gap:3px;margin-bottom:8px}
+.sc .dots i{width:14px;height:5px;border-radius:999px;background:var(--line)}
+.sc .dots i.f{background:var(--violet)}
+.sc:hover{border-color:var(--violet)}
+.sc.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.sc.on .dots i{background:rgba(255,255,255,.25)}.sc.on .dots i.f{background:#fff}
+
+/* Navigation */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px}
+.btn{border:0;border-radius:999px;padding:15px 28px;font-weight:600;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .18s,box-shadow .18s,opacity .2s}
+.btn .ic{width:18px;height:18px}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 10px 26px rgba(141,104,250,.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(141,104,250,.5)}
+.btn-p:disabled{opacity:.45;transform:none;box-shadow:none;cursor:not-allowed}
+.btn-g{background:#fff;border:1.5px solid var(--line);color:var(--indigo)}
 .btn-g:hover{border-color:var(--violet);color:var(--violet)}
-.btn-w{background:#fff;color:var(--indigo)}
+.btn-w{background:#fff;color:var(--indigo);box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.btn-big{padding:18px 34px;font-size:18px}
+.err{color:var(--corail);font-size:14px;min-height:20px;margin-top:12px;font-weight:500}
+
+/* Analyse */
+.analyse{text-align:center;padding-top:80px}
+.analyse svg{width:200px;height:200px;animation:spin 1.6s cubic-bezier(.5,.1,.5,.9) infinite}
+.analyse h2{margin-top:30px}
+.steps-a{list-style:none;padding:0;margin:20px auto 0;max-width:360px;text-align:left}
+.steps-a li{display:flex;gap:10px;align-items:center;padding:8px 0;color:var(--muted);opacity:.35;transition:opacity .3s}
+.steps-a li.on{opacity:1;color:var(--indigo)}
+.steps-a .ic{width:20px;height:20px;color:var(--green)}
 
 /* Résultat */
-.kpis{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin:8px 0 26px}
-.kpi{border-radius:22px;padding:22px}
-.kpi.dark{background:var(--hero);color:#fff}
-.kpi.soft{background:var(--lilac)}
-.kpi .big{font-family:'Space Grotesk';font-weight:700;font-size:56px;line-height:1;letter-spacing:-.02em}
-.kpi .big small{font-size:18px;font-weight:500;margin-left:4px}
-.kpi.dark .big{color:#fff}
-.kpi.soft .big{color:var(--indigo)}
-.kpi p{margin:8px 0 0;font-size:15px}
-.kpi.dark p{color:var(--lav)}
-.kpi.soft p{color:var(--muted)}
-.sec-t{font-size:22px;color:var(--indigo);margin:34px 0 6px}
+.r-hero{background:var(--hero);color:#fff;border-radius:32px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.r-hero::after{content:"";position:absolute;right:-60px;bottom:-90px;width:300px;height:300px;background:url('assets/site-pattern-3.svg') no-repeat center/contain;opacity:.25}
+.ring{position:relative;width:190px;height:190px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .v b{font-family:'Space Grotesk';font-size:56px;line-height:1;display:block}
+.ring .v small{color:var(--lav);font-size:14px}
+.r-hero h2{color:#fff;font-size:34px;margin:6px 0 10px}
+.r-hero .lvl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 14px;font-weight:600;color:#fff}
+.r-hero .lvl .ic{width:18px;height:18px;color:var(--corail)}
+.r-hero p{color:var(--lav);margin:12px 0 0;position:relative;z-index:1}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 8px}
+.kpi{background:#fff;border-radius:22px;padding:20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sh)}
+.kpi .chip{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--grad);flex:0 0 auto}
+.kpi.k1 .chip{background:linear-gradient(135deg,#E4765A,#F0A08A)}
+.kpi b{font-family:'Space Grotesk';font-size:40px;line-height:1;color:var(--indigo);display:block}
+.kpi b small{font-size:16px;margin-left:3px}
+.kpi div > span{font-size:14px;color:var(--muted)}
+.sec-t{font-size:24px;color:var(--indigo);margin:40px 0 6px}
 .sec-l{color:var(--muted);margin:0 0 16px}
-.bars{display:grid;gap:10px}
-.barrow{display:grid;grid-template-columns:190px 1fr 70px;gap:12px;align-items:center;font-size:15px}
-.track{height:14px;background:var(--lilac);border-radius:999px;overflow:hidden}
-.fill{height:100%;border-radius:999px;background:var(--grad);width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bars{background:#fff;border-radius:22px;padding:22px;box-shadow:var(--sh);display:grid;gap:14px}
+.barrow{display:grid;grid-template-columns:36px 180px 1fr 64px;gap:12px;align-items:center;font-size:15px}
+.barrow .chip{width:36px;height:36px;border-radius:11px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.barrow .chip .ic{width:18px;height:18px}
+.track{height:16px;background:var(--lilac);border-radius:999px;overflow:hidden}
+.fill{height:100%;border-radius:999px;background:var(--grad);width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
 .barrow b{font-family:'Space Grotesk';color:var(--indigo);text-align:right}
 .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.pain{border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px}
-.pain .rank{font-family:'Space Grotesk';font-weight:700;color:var(--violet);font-size:13px;letter-spacing:.14em}
-.pain h4{margin:0;font-family:'Space Grotesk';font-weight:500;color:var(--indigo);font-size:18px;line-height:1.25}
-.pain .h{font-size:14px;color:var(--corail);font-weight:600}
+.pain{background:#fff;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.pain::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:var(--grad)}
+.pain .rk{display:flex;justify-content:space-between;align-items:center}
+.pain .rk span{font-family:'Space Grotesk';font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--violet)}
+.pain .rk .chip{width:40px;height:40px;border-radius:12px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.pain h4{margin:0;color:var(--indigo);font-size:18px;line-height:1.25;font-weight:500}
+.pain .h{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--corail);font-weight:600;background:var(--corailp);padding:4px 10px;border-radius:999px;align-self:flex-start}
+.pain .h .ic{width:15px;height:15px}
 .pain p{margin:0;color:var(--muted);font-size:15px}
-.pain .who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:14px}
-.pain .who img{width:34px;height:34px;border-radius:999px;object-fit:cover}
+.pain .who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
+.pain .who img{width:36px;height:36px;border-radius:999px;object-fit:cover}
 .experts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.xcard{border-radius:22px;padding:22px;background:var(--indigo);color:#fff;position:relative;overflow:hidden}
-.xcard:nth-child(2){background:var(--violet-deep)}
-.xcard:nth-child(3){background:var(--violet)}
-.xcard img{width:64px;height:64px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,.7)}
-.xcard h4{margin:12px 0 2px;font-family:'Space Grotesk';font-size:20px}
+.xcard{border-radius:24px;padding:22px;background:var(--indigo);color:#fff;position:relative;overflow:hidden;box-shadow:var(--sh2);transition:transform .2s}
+.xcard:hover{transform:translateY(-4px)}
+.xcard:nth-child(2){background:var(--violet-deep)}.xcard:nth-child(3){background:var(--violet)}
+.xcard .top-x{display:flex;justify-content:space-between;align-items:flex-start}
+.xcard img{width:72px;height:72px;border-radius:999px;object-fit:cover;border:3px solid rgba(255,255,255,.75)}
+.match{width:64px;height:64px;position:relative}
+.match svg{width:100%;height:100%;transform:rotate(-90deg)}
+.match b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Space Grotesk';font-size:16px}
+.xcard h4{margin:14px 0 2px;font-size:22px}
 .xcard .m{color:var(--lav);font-size:14px}
 .xcard:nth-child(3) .m{color:#fff}
-.xcard ul{margin:12px 0 0;padding-left:18px;font-size:14px}
-.xcard .hh{position:absolute;right:18px;top:18px;font-family:'Space Grotesk';font-weight:700;font-size:22px}
-.xcard .hh small{font-size:12px;font-weight:500}
-.offer{margin-top:30px;border-radius:28px;background:var(--hero);color:#fff;padding:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden}
-.offer h3{margin:6px 0 10px;font-size:28px;letter-spacing:-.02em}
+.xcard ul{list-style:none;margin:14px 0 0;padding:0;font-size:14px;display:grid;gap:6px}
+.xcard li{display:flex;gap:8px;align-items:flex-start}
+.xcard li .ic{width:16px;height:16px;margin-top:2px;color:var(--lav)}
+.xcard .gain{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;display:flex;gap:8px;align-items:center}
+.xcard .gain .ic{width:16px;height:16px}
+.offer{margin-top:36px;border-radius:32px;background:var(--hero);color:#fff;padding:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.offer h3{margin:8px 0 10px;font-size:30px}
 .offer p{color:var(--lav);margin:0}
-.offer .cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.note{font-size:13px;color:var(--grey2);margin-top:18px}
-.stack{display:flex}
-.stack img{width:42px;height:42px;border-radius:999px;object-fit:cover;border:2px solid #fff;margin-left:-10px;box-shadow:0 2px 8px rgba(30,16,80,.18)}
+.offer .cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start;position:relative;z-index:1}
+.stack{display:flex;margin-bottom:6px}
+.stack img{width:48px;height:48px;border-radius:999px;object-fit:cover;border:3px solid #fff;margin-left:-12px}
 .stack img:first-child{margin-left:0}
-footer{border-top:1px solid var(--line);padding:22px 0;color:var(--grey2);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.note{font-size:13px;color:var(--grey2);margin-top:18px}
+footer{padding:22px 0 30px;color:var(--grey2);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
 
 @media (max-width:860px){
-  .tiles{grid-template-columns:repeat(2,1fr)}
+  .hero .in{grid-template-columns:1fr}.bloom{max-width:240px;order:-1}
+  .c4{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(2,1fr)}
   .kpis,.pains,.experts{grid-template-columns:1fr}
-  .offer{grid-template-columns:1fr}
-  .barrow{grid-template-columns:120px 1fr 56px;font-size:14px}
+  .offer,.r-hero{grid-template-columns:1fr}.ring{margin:0 auto}
+  .barrow{grid-template-columns:32px 1fr 56px}.barrow .track{grid-column:2/4;grid-row:2}
+  .scale{grid-template-columns:repeat(2,1fr)}
+  .floaty{display:none}
 }
 @media (max-width:560px){
-  .wrap{padding:0 16px}
-  .grid2{grid-template-columns:1fr}
-  .hero h1{font-size:34px}
-  .screen h2{font-size:25px}
-  .kpi .big{font-size:46px}
-  .top .bar img{height:24px}
-  .step-dots span{width:18px}
-  .chips{margin-left:0}
+  .wrap{padding:0 16px}.form{grid-template-columns:1fr}
+  .hero h1{font-size:36px}.screen h2{font-size:26px}
+  .hours{grid-template-columns:repeat(2,1fr)}
+  .top img.logo{height:22px}
+  .nav .btn{padding:14px 20px}
 }
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bloom .p{transform:none}}
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <div class="bar">
-      <img src="assets/logo/yelema-logo-blanc.png" alt="Yelema">
-      <div class="step-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="hero">
-      <div class="eyebrow">Le Déclic</div>
-      <h1>Voyez où votre entreprise <em>perd du temps</em>, en trois minutes.</h1>
-      <p>Choisissez vos services, cochez ce qui vous coûte des heures. Le Déclic vous montre aussitôt vos priorités et l'Expert IA qui reprend chaque tâche.</p>
-    </div>
-  </div>
-</header>
+<header class="top"><div class="wrap in">
+  <img class="logo" src="assets/logo/yelema-logo-blanc.png" alt="Yelema">
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+  <svg class="mini" id="mini" viewBox="0 0 480 480" aria-hidden="true"></svg>
+</div></header>
 
-<main class="wrap">
-  <!-- 1. Vous -->
-  <section class="screen on" id="s1">
-    <div class="eyebrow">Étape 1 sur 3</div>
-    <h2>Faisons connaissance.</h2>
-    <p class="lede">Votre diagnostic vous est adressé à cette adresse.</p>
-    <div class="grid2">
-      <label class="f">Prénom et nom<input id="nom" autocomplete="name" placeholder="Awa Koné"></label>
-      <label class="f">Email professionnel<input id="email" type="email" autocomplete="email" placeholder="awa@entreprise.ci"></label>
-      <label class="f">Entreprise<input id="entreprise" autocomplete="organization" placeholder="Nom de votre entreprise"></label>
-      <label class="f">Votre fonction<input id="fonction" autocomplete="organization-title" placeholder="Directrice financière"></label>
-      <label class="f">Taille de l'entreprise
-        <select id="taille"><option value="">Choisir</option><option>Moins de 10 personnes</option><option>10 à 49 personnes</option><option>50 à 249 personnes</option><option>250 personnes et plus</option></select>
-      </label>
-      <label class="f">Secteur
-        <select id="secteur"><option value="">Choisir</option><option>Commerce et distribution</option><option>Banque, microfinance et assurance</option><option>Industrie et production</option><option>Agro-industrie</option><option>Transport et logistique</option><option>Santé</option><option>Éducation et formation</option><option>Services professionnels</option><option>Tech et télécoms</option><option>Hôtellerie et restauration</option><option>Secteur public</option><option>Autre</option></select>
-      </label>
-    </div>
-    <div class="err" id="err1"></div>
-    <div class="actions"><span></span><button class="btn btn-p" data-go="2">Choisir mes services →</button></div>
-  </section>
-
-  <!-- 2. Départements -->
-  <section class="screen" id="s2">
-    <div class="eyebrow">Étape 2 sur 3</div>
-    <h2>Quels services voulez-vous soulager ?</h2>
-    <p class="lede">Choisissez-en un ou plusieurs. Chaque service a son Expert IA.</p>
-    <div class="tiles" id="tiles"></div>
-    <div class="err" id="err2"></div>
-    <div class="actions"><button class="btn btn-g" data-go="1">← Retour</button><button class="btn btn-p" data-go="3">Continuer →</button></div>
-  </section>
-
-  <!-- 3. Douleurs -->
-  <section class="screen" id="s3">
-    <div class="eyebrow">Étape 3 sur 3</div>
-    <h2>Où perdez-vous du temps ?</h2>
-    <p class="lede">Cochez les tâches qui vous coûtent le plus, puis dites combien d'heures elles prennent par semaine, toute l'équipe confondue.</p>
-    <div id="depts"></div>
-    <div class="err" id="err3"></div>
-    <div class="actions"><button class="btn btn-g" data-go="2">← Retour</button><button class="btn btn-p" data-go="4">Voir mon diagnostic →</button></div>
-  </section>
-
-  <!-- 4. Résultat -->
-  <section class="screen" id="s4">
-    <div class="eyebrow" id="r-eyebrow">Votre diagnostic</div>
-    <h2 id="r-titre">Voici ce que Le Déclic a trouvé.</h2>
-    <p class="lede" id="r-lede"></p>
-    <div class="kpis">
-      <div class="kpi dark"><div class="big" id="k-perdu">0<small>h</small></div><p>par semaine sur les tâches que vous avez cochées.</p></div>
-      <div class="kpi soft"><div class="big" id="k-repris">0<small>h</small></div><p>qu'un Expert IA peut reprendre chaque semaine.</p></div>
-      <div class="kpi soft"><div class="big" id="k-jours">0<small>jours</small></div><p>de travail rendus à votre équipe chaque mois.</p></div>
-    </div>
-
-    <h3 class="sec-t">Où part votre temps.</h3>
-    <p class="sec-l">Heures déclarées par service, chaque semaine.</p>
-    <div class="bars" id="bars"></div>
-
-    <h3 class="sec-t">Vos trois priorités.</h3>
-    <p class="sec-l">Les tâches qui vous coûtent le plus, et ce que l'Expert IA en fait.</p>
-    <div class="pains" id="pains"></div>
-
-    <h3 class="sec-t">Les Experts IA faits pour vous.</h3>
-    <p class="sec-l">Classés selon le temps qu'ils vous rendent.</p>
-    <div class="experts" id="experts"></div>
-
-    <div class="offer">
-      <div>
-        <div class="eyebrow" style="color:#C5B8FF">Votre démonstration</div>
-        <h3 id="o-titre">Voyons vos priorités en démonstration.</h3>
-        <p id="o-texte">En une heure, nous montrons l'Expert IA sur votre tâche la plus coûteuse, dans vos outils.</p>
-      </div>
-      <div class="cta">
-        <div class="stack" id="o-stack"></div>
-        <a class="btn btn-w" id="o-cal" href="https://calendly.com/leslie_mstudio/meeting-with-mstudio" target="_blank" rel="noopener">Réserver ma démonstration →</a>
-        <a class="btn btn-g" style="color:#fff;border-color:rgba(255,255,255,.35)" id="o-mail" href="#">Recevoir mon diagnostic par email</a>
-      </div>
-    </div>
-    <p class="note" id="note"></p>
-    <div class="actions"><button class="btn btn-g" data-go="3">← Modifier mes réponses</button><button class="btn btn-g" id="restart">Recommencer</button></div>
-  </section>
-</main>
-
+<div id="app"></div>
 <footer><div class="wrap">Yelema, votre entreprise, décuplée par l'IA. · contact@yelema.ai</div></footer>
 
 <script src="data.js"></script>
+<script>window.ICONES={"arrow-left": "<path d=\"m12 19-7-7 7-7\" /> <path d=\"M19 12H5\" />", "arrow-right": "<path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" />", "brain-circuit": "<path d=\"M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z\" /> <path d=\"M9 13a4.5 4.5 0 0 0 3-4\" /> <path d=\"M6.003 5.125A3 3 0 0 0 6.401 6.5\" /> <path d=\"M3.477 10.896a4 4 0 0 1 .585-.396\" /> <path d=\"M6 18a4 4 0 0 1-1.967-.516\" /> <path d=\"M12 13h4\" /> <path d=\"M12 18h6a2 2 0 0 1 2 2v1\" /> <path d=\"M12 8h8\" /> <path d=\"M16 8V5a2 2 0 0 1 2-2\" /> <circle cx=\"16\" cy=\"13\" r=\".5\" /> <circle cx=\"18\" cy=\"3\" r=\".5\" /> <circle cx=\"20\" cy=\"21\" r=\".5\" /> <circle cx=\"20\" cy=\"8\" r=\".5\" />", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\" /> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\" /> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\" /> <path d=\"M10 6h4\" /> <path d=\"M10 10h4\" /> <path d=\"M10 14h4\" /> <path d=\"M10 18h4\" />", "calendar": "<path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" />", "chart-column": "<path d=\"M3 3v16a2 2 0 0 0 2 2h16\" /> <path d=\"M18 17V9\" /> <path d=\"M13 17V5\" /> <path d=\"M8 17v-3\" />", "check": "<path d=\"M20 6 9 17l-5-5\" />", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <polyline points=\"12 6 12 12 16 14\" />", "cpu": "<rect width=\"16\" height=\"16\" x=\"4\" y=\"4\" rx=\"2\" /> <rect width=\"6\" height=\"6\" x=\"9\" y=\"9\" rx=\"1\" /> <path d=\"M15 2v2\" /> <path d=\"M15 20v2\" /> <path d=\"M2 15h2\" /> <path d=\"M2 9h2\" /> <path d=\"M20 15h2\" /> <path d=\"M20 9h2\" /> <path d=\"M9 2v2\" /> <path d=\"M9 20v2\" />", "crown": "<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\" /> <path d=\"M5 21h14\" />", "database": "<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\" /> <path d=\"M3 5V19A9 3 0 0 0 21 19V5\" /> <path d=\"M3 12A9 3 0 0 0 21 12\" />", "factory": "<path d=\"M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\" /> <path d=\"M17 18h1\" /> <path d=\"M12 18h1\" /> <path d=\"M7 18h1\" />", "file-text": "<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" />", "gauge": "<path d=\"m12 14 4-4\" /> <path d=\"M3.34 19a10 10 0 1 1 17.32 0\" />", "globe": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />", "graduation-cap": "<path d=\"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z\" /> <path d=\"M22 10v6\" /> <path d=\"M6 12.5V16a6 3 0 0 0 12 0v-3.5\" />", "hand-coins": "<path d=\"M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17\" /> <path d=\"m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\" /> <path d=\"m2 16 6 6\" /> <circle cx=\"16\" cy=\"9\" r=\"2.9\" /> <circle cx=\"6\" cy=\"5\" r=\"3\" />", "headset": "<path d=\"M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z\" /> <path d=\"M21 16v2a4 4 0 0 1-4 4h-5\" />", "heart-pulse": "<path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\" /> <path d=\"M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27\" />", "hotel": "<path d=\"M10 22v-6.57\" /> <path d=\"M12 11h.01\" /> <path d=\"M12 7h.01\" /> <path d=\"M14 15.43V22\" /> <path d=\"M15 16a5 5 0 0 0-6 0\" /> <path d=\"M16 11h.01\" /> <path d=\"M16 7h.01\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 7h.01\" /> <rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />", "landmark": "<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\" /> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\" /> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\" /> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\" /> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\" /> <polygon points=\"12 2 20 7 4 7\" />", "layers": "<path d=\"m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z\" /> <path d=\"m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65\" /> <path d=\"m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65\" />", "mail": "<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /> <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" />", "megaphone": "<path d=\"m3 11 18-5v12L3 14v-3z\" /> <path d=\"M11.6 16.8a3 3 0 1 1-5.8-1.6\" />", "message-circle": "<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\" />", "package": "<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\" /> <path d=\"M12 22V12\" /> <path d=\"m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7\" /> <path d=\"m7.5 4.27 9 5.15\" />", "palette": "<circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\" /> <path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\" />", "party-popper": "<path d=\"M5.8 11.3 2 22l10.7-3.79\" /> <path d=\"M4 3h.01\" /> <path d=\"M22 8h.01\" /> <path d=\"M15 2h.01\" /> <path d=\"M22 20h.01\" /> <path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\" /> <path d=\"m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17\" /> <path d=\"m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7\" /> <path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\" />", "rocket": "<path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z\" /> <path d=\"m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z\" /> <path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0\" /> <path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\" />", "rotate-ccw": "<path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\" /> <path d=\"M3 3v5h5\" />", "scale": "<path d=\"m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"M7 21h10\" /> <path d=\"M12 3v18\" /> <path d=\"M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2\" />", "shield-check": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" />", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\" /> <path d=\"M20 3v4\" /> <path d=\"M22 5h-4\" /> <path d=\"M4 17v2\" /> <path d=\"M5 18H3\" />", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\" /> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\" /> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\" /> <path d=\"M2 7h20\" /> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\" />", "target": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <circle cx=\"12\" cy=\"12\" r=\"6\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" />", "timer": "<line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\" /> <line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\" /> <circle cx=\"12\" cy=\"14\" r=\"8\" />", "trending-up": "<polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\" /> <polyline points=\"16 7 22 7 22 13\" />", "truck": "<path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\" /> <path d=\"M15 18H9\" /> <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\" /> <circle cx=\"17\" cy=\"18\" r=\"2\" /> <circle cx=\"7\" cy=\"18\" r=\"2\" />", "user-search": "<circle cx=\"10\" cy=\"7\" r=\"4\" /> <path d=\"M10.3 15H7a4 4 0 0 0-4 4v2\" /> <circle cx=\"17\" cy=\"17\" r=\"3\" /> <path d=\"m21 21-1.9-1.9\" />", "user": "<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\" /> <circle cx=\"12\" cy=\"7\" r=\"4\" />", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />", "wallet": "<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\" /> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\" />", "wheat": "<path d=\"M2 22 16 8\" /> <path d=\"M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z\" /> <path d=\"M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" />", "workflow": "<rect width=\"8\" height=\"8\" x=\"3\" y=\"3\" rx=\"2\" /> <path d=\"M7 11v4a2 2 0 0 0 2 2h4\" /> <rect width=\"8\" height=\"8\" x=\"13\" y=\"13\" rx=\"2\" />", "zap": "<path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\" />"};</script>
 <script>
 (function(){
-  const D = window.DECLIC, $ = s => document.querySelector(s);
-  const st = { depts: new Set(), taches: {}, outils: {} }; // taches[id] = heures
-  const parId = {}; D.departements.forEach(d => d.taches.forEach(t => parId[t.id] = { t, d }));
-  const img = f => 'assets/experts/' + f;
-  const nb = x => (Math.round(x * 10) / 10).toString().replace('.', ',');
+const D = window.DECLIC, I = window.ICONES, app = document.getElementById('app');
+const ic = n => `<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[n] || ''}</svg></span>`;
+const ph = f => 'assets/experts/' + f, lg = o => 'assets/logos/' + D.logos[o];
+const nb = x => (Math.round(x * 10) / 10).toString().replace('.', ',');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st = { profil: {}, taille: null, secteur: null, depts: [], taches: {}, outils: {}, mat: {}, objectif: null };
+const parId = {}; D.departements.forEach(d => d.taches.forEach(t => parId[t.id] = { t, d }));
+const dep = id => D.departements.find(d => d.id === id);
 
-  // Tuiles
-  $('#tiles').innerHTML = D.departements.map(d => `
-    <button class="tile" data-d="${d.id}" aria-pressed="false">
-      <span class="ck">✓</span><img src="${img(d.photo)}" alt="">
-      <span class="n">${d.nom}</span><span class="e">${d.expert}, ${d.metier.toLowerCase()}</span>
-    </button>`).join('');
-  $('#tiles').addEventListener('click', e => {
-    const b = e.target.closest('.tile'); if (!b) return;
-    const id = b.dataset.d;
-    st.depts.has(id) ? st.depts.delete(id) : st.depts.add(id);
-    b.classList.toggle('sel', st.depts.has(id)); b.setAttribute('aria-pressed', st.depts.has(id));
-  });
+// La fleur Yelema : six pétales arrondis autour d'un cœur (trois barres croisées à 30, 90 et 150 degrés).
+const PET = ['#2E4EC4', '#4A299C', '#8D68FA', '#6F4BDF', '#A486FB', '#301667'];
+function fleur(cls, couleurs, rayon){
+  return [0,1,2,3,4,5].map(k => `<g transform="rotate(${30+k*60} 240 240)"><rect class="${cls}" x="${240-rayon/2}" y="12" width="${rayon}" height="236" rx="${rayon/2}" fill="${couleurs[k]}" style="animation-delay:${k*.12}s"/></g>`).join('');
+}
+function majMini(f){ document.getElementById('mini').innerHTML = [0,1,2,3,4,5].map(k => `<rect x="200" y="20" width="80" height="220" rx="40" fill="${k < Math.round(f*6) ? PET[k] : 'rgba(255,255,255,.18)'}" transform="rotate(${30+k*60} 240 240)"/>`).join(''); }
 
-  function rendreDepts(){
-    $('#depts').innerHTML = D.departements.filter(d => st.depts.has(d.id)).map(d => `
-      <div class="dept">
-        <div class="dept-h"><img src="${img(d.photo)}" alt=""><div><h3>${d.nom}</h3><span>Avec ${d.expert}, ${d.metier.toLowerCase()}</span></div></div>
-        ${d.taches.map(t => `
-          <div class="task ${t.id in st.taches ? 'sel' : ''}" data-t="${t.id}">
-            <button class="task-row" type="button"><span class="box">✓</span><span>${t.label}</span></button>
-            <div class="chips"><small>Combien d'heures par semaine ?</small>
-              ${D.temps.map(x => `<button type="button" class="chip ${st.taches[t.id] === x.heures ? 'on' : ''}" data-h="${x.heures}">${x.label}</button>`).join('')}
-            </div>
-          </div>`).join('')}
-        <div class="tools"><p>Les outils que ce service utilise :</p><div class="chips">
-          ${d.outils.map(o => `<button type="button" class="chip ${(st.outils[d.id] || []).includes(o) ? 'on' : ''}" data-o="${o}" data-d="${d.id}">${o}</button>`).join('')}
-        </div></div>
-      </div>`).join('');
-  }
-  $('#depts').addEventListener('click', e => {
-    const o = e.target.closest('[data-o]');
-    if (o) { const l = st.outils[o.dataset.d] = st.outils[o.dataset.d] || []; const i = l.indexOf(o.dataset.o); i < 0 ? l.push(o.dataset.o) : l.splice(i, 1); o.classList.toggle('on'); return; }
-    const task = e.target.closest('.task'); if (!task) return;
-    const id = task.dataset.t, chip = e.target.closest('[data-h]');
-    if (chip) { st.taches[id] = +chip.dataset.h; task.querySelectorAll('[data-h]').forEach(c => c.classList.toggle('on', c === chip)); return; }
-    if (e.target.closest('.task-row')) {
-      if (id in st.taches) delete st.taches[id]; else st.taches[id] = 0;
-      task.classList.toggle('sel', id in st.taches);
-      task.querySelectorAll('[data-h]').forEach(c => c.classList.remove('on'));
+// Écrans : construits à la volée, les écrans de tâches suivent les services choisis.
+function ecrans(){
+  const L = ['accueil', 'profil', 'taille', 'secteur', 'services'];
+  st.depts.forEach(d => L.push('taches:' + d));
+  L.push('maturite', 'objectif', 'analyse', 'resultat');
+  return L;
+}
+let pos = 0;
+function aller(n){
+  const L = ecrans(); pos = Math.max(0, Math.min(n, L.length - 1));
+  const [nom, arg] = L[pos].split(':');
+  app.innerHTML = `<section class="screen on">${VUES[nom](arg)}</section>`;
+  const f = pos / (L.length - 1);
+  document.getElementById('prog').style.width = (f * 100) + '%'; majMini(f);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (APRES[nom]) APRES[nom](arg);
+}
+const suiv = () => aller(pos + 1), prec = () => aller(pos - 1);
+const nav = (ok, label) => `<div class="nav"><button class="btn btn-g" data-a="prec">${ic('arrow-left')} Retour</button><button class="btn btn-p" data-a="suiv" ${ok ? '' : 'disabled'} id="go">${label || 'Continuer'} ${ic('arrow-right')}</button></div><div class="err" id="err"></div>`;
+const tete = (icone, eyebrow, titre, lede) => `<div class="wrap"><div class="q-h"><div class="q-ic">${ic(icone)}</div><div class="eyebrow">${eyebrow}</div></div><h2>${titre}</h2><p class="lede">${lede}</p>`;
+
+const VUES = {
+  accueil: () => `<div class="hero" style="margin-top:-40px"><div class="wrap in">
+      <div><div class="eyebrow" style="color:#C5B8FF">Le Déclic, par Yelema</div>
+        <h1>Voyez où votre entreprise <em>perd du temps</em>.</h1>
+        <p>Une dizaine de clics, trois minutes. Le Déclic vous montre vos tâches les plus coûteuses, votre note de maturité IA et les Experts IA qui reprennent le travail.</p>
+        <button class="btn btn-w btn-big" data-a="suiv">${ic('sparkles')} Faire mon Déclic</button>
+        <div class="perks"><span>${ic('timer')} 3 minutes</span><span>${ic('gauge')} Résultat immédiat</span><span>${ic('shield-check')} Gratuit, sans engagement</span></div>
+      </div>
+      <div style="position:relative">
+        <svg class="bloom" viewBox="0 0 480 480"><g class="spin">${fleur('p', PET, 92)}</g><circle class="core" cx="240" cy="240" r="34" fill="#E4765A"/></svg>
+        <div class="floaty" style="left:-10px;top:16%"><img src="${ph('av-kouassi-sq.jpg')}" alt="">Kouassi relance vos devis</div>
+        <div class="floaty" style="right:-10px;top:48%;animation-delay:1.5s"><img src="${ph('av-mamadou-sq.jpg')}" alt="">Mamadou suit vos impayés</div>
+        <div class="floaty" style="left:8%;bottom:4%;animation-delay:3s"><img src="${ph('av-awa-sq.jpg')}" alt="">Awa répond jour et nuit</div>
+      </div></div></div>`,
+
+  profil: () => tete('user', 'Étape 1', 'Faisons connaissance.', 'Votre diagnostic vous est adressé à cette adresse.') +
+    `<div class="form">${[['nom','user','Prénom et nom','Awa Koné','name'],['email','mail','Email professionnel','awa@entreprise.ci','email'],['entreprise','building-2','Entreprise','Nom de votre entreprise','organization'],['fonction','briefcase','Votre fonction','Directrice financière','organization-title']]
+      .map(([k,i,l,p,a]) => `<div class="fld">${ic(i)}<label>${l}<input id="${k}" autocomplete="${a}" ${k==='email'?'type="email"':''} placeholder="${p}" value="${esc(st.profil[k]||'')}"></label></div>`).join('')}</div>` + nav(true) + '</div>',
+
+  taille: () => tete('users', 'Étape 2', 'Combien êtes-vous ?', 'Toute l\'entreprise, siège et agences confondus.') +
+    `<div class="cards c4">${D.tailles.map(t => `<button class="card ${st.taille===t.label?'sel':''}" data-taille="${t.label}"><span class="tick">${ic('check')}</span><span class="chip">${ic(t.icone)}</span><span class="t">${t.label}</span></button>`).join('')}</div>` + nav(!!st.taille) + '</div>',
+
+  secteur: () => tete('globe', 'Étape 3', 'Dans quel secteur travaillez-vous ?', 'Le Déclic adapte ses exemples à votre métier.') +
+    `<div class="cards c4">${D.secteurs.map(t => `<button class="card ${st.secteur===t.label?'sel':''}" data-secteur="${t.label}"><span class="tick">${ic('check')}</span><span class="chip">${ic(t.icone)}</span><span class="t">${t.label}</span></button>`).join('')}</div>` + nav(!!st.secteur) + '</div>',
+
+  services: () => tete('layers', 'Étape 4', 'Quels services voulez-vous soulager ?', 'Choisissez-en un ou plusieurs. Chaque service a son Expert IA.') +
+    `<div class="cards c4">${D.departements.map(d => `<button class="card ${st.depts.includes(d.id)?'sel':''}" data-dept="${d.id}"><span class="tick">${ic('check')}</span>
+      <span class="face"><img src="${ph(d.photo)}" alt=""><span class="chip">${ic(d.icone)}</span></span><span class="t">${d.nom}</span><span class="s">Avec ${d.expert}</span></button>`).join('')}</div>` + nav(st.depts.length > 0) + '</div>',
+
+  taches: id => { const d = dep(id), k = st.depts.indexOf(id) + 1;
+    return tete(d.icone, `Service ${k} sur ${st.depts.length}`, `${d.nom} : où perdez-vous du temps ?`, 'Cochez ce qui vous coûte des heures, puis dites combien par semaine, toute l\'équipe confondue.') +
+    `<div class="exp-pill"><img src="${ph(d.photo)}" alt=""><span><b>${d.expert}</b> reprend ces tâches pour vous</span></div>` +
+    d.taches.map(t => { const h = st.taches[t.id]; return `<div class="task ${t.id in st.taches?'sel':''}" data-t="${t.id}">
+        <button class="task-row" data-tache="${t.id}"><span class="box">${ic('check')}</span><span class="l">${t.label}</span></button>
+        <div class="hours"><span class="lab">${ic('clock')} Combien d'heures par semaine ?</span>
+          ${D.temps.map(x => `<button class="hb ${h===x.heures?'on':''}" data-h="${x.heures}" data-tt="${t.id}">${x.label}</button>`).join('')}</div></div>`; }).join('') +
+    `<div class="tools"><p>${ic('zap')} Les outils que ce service utilise</p><div class="logos">${d.outils.map(o => `<button class="logo-b ${(st.outils[id]||[]).includes(o)?'on':''}" data-outil="${o}" data-d="${id}"><img src="${lg(o)}" alt="">${o}</button>`).join('')}</div></div>` + nav(okTaches(id)) + '</div>'; },
+
+  maturite: () => tete('brain-circuit', 'Presque fini', 'Où en êtes-vous avec l\'IA ?', 'Trois questions pour calculer votre note de maturité.') +
+    D.maturite.map(q => `<div class="mq"><h3><span class="chip">${ic(q.icone)}</span>${q.question}</h3><div class="scale">${q.reponses.map((r, i) => `<button class="sc ${st.mat[q.id]===i?'on':''}" data-q="${q.id}" data-v="${i}"><span class="dots">${[0,1,2,3].map(j => `<i class="${j<=i?'f':''}"></i>`).join('')}</span>${r}</button>`).join('')}</div></div>`).join('') + nav(Object.keys(st.mat).length === D.maturite.length) + '</div>',
+
+  objectif: () => tete('target', 'Dernière question', 'Qu\'attendez-vous d\'abord ?', 'Le Déclic met cette attente en tête de votre plan.') +
+    `<div class="cards c4">${D.objectifs.map(o => `<button class="card ${st.objectif===o.id?'sel':''}" data-obj="${o.id}"><span class="tick">${ic('check')}</span><span class="chip">${ic(o.icone)}</span><span class="t">${o.label}</span></button>`).join('')}</div>` + nav(!!st.objectif, 'Voir mon Déclic') + '</div>',
+
+  analyse: () => `<div class="wrap analyse"><svg viewBox="0 0 480 480">${fleur('', PET, 92)}<circle cx="240" cy="240" r="34" fill="#E4765A"/></svg>
+    <h2>Le Déclic analyse vos réponses.</h2><ul class="steps-a">
+    <li>${ic('check')} Calcul du temps perdu, service par service</li><li>${ic('check')} Classement de vos priorités</li><li>${ic('check')} Choix des Experts IA faits pour vous</li><li>${ic('check')} Calcul de votre note de maturité</li></ul></div>`,
+
+  resultat: () => resultat()
+};
+const APRES = {
+  analyse: () => { const li = document.querySelectorAll('.steps-a li'); li.forEach((l, i) => setTimeout(() => l.classList.add('on'), 350 + i * 420)); setTimeout(suiv, 2300); },
+  resultat: () => animer(),
+  profil: () => document.getElementById('nom').focus()
+};
+function okTaches(id){ const c = dep(id).taches.filter(t => t.id in st.taches); return c.length > 0 && c.every(t => st.taches[t.id] > 0); }
+
+function calcul(){
+  const liste = Object.entries(st.taches).filter(([id, h]) => h > 0 && st.depts.includes(parId[id].d.id)).map(([id, h]) => ({ ...parId[id], h })).sort((a, b) => b.h - a.h);
+  const total = liste.reduce((s, x) => s + x.h, 0), repris = total * D.partReprise;
+  const parD = {}; liste.forEach(x => { (parD[x.d.id] = parD[x.d.id] || { d: x.d, h: 0, t: [] }); parD[x.d.id].h += x.h; parD[x.d.id].t.push(x.t); });
+  const ds = Object.values(parD).sort((a, b) => b.h - a.h);
+  const note = Math.round(Object.values(st.mat).reduce((s, v) => s + v, 0) / (3 * D.maturite.length) * 100);
+  const niv = [...D.niveaux].reverse().find(n => note >= n.min);
+  return { liste, total, repris, ds, note, niv };
+}
+function resultat(){
+  const R = calcul(), p = st.profil, prenom = (p.nom || '').split(' ')[0], max = R.ds.length ? R.ds[0].h : 1;
+  const obj = D.objectifs.find(o => o.id === st.objectif);
+  const top = R.ds.slice(0, 2).map(x => x.d), p1 = R.liste[0];
+  return `<div class="wrap">
+    <div class="r-hero">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="12"/><circle id="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#gr)" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/><defs><linearGradient id="gr"><stop offset="0" stop-color="#E4765A"/><stop offset="1" stop-color="#8D68FA"/></linearGradient></defs></svg>
+        <div class="v"><div><b class="cnt" data-to="${R.note}">0</b><small>sur 100</small></div></div></div>
+      <div style="position:relative;z-index:1"><div class="eyebrow" style="color:#C5B8FF">Votre note de maturité IA</div>
+        <h2>${prenom ? esc(prenom) + ', votre' : 'Votre'} Déclic est prêt.</h2>
+        <span class="lvl">${ic('rocket')} ${R.niv.nom}</span><p>${R.niv.texte}</p></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi k1"><span class="chip">${ic('clock')}</span><div><b><span class="cnt" data-to="${R.total}">0</span><small>h</small></b><span>perdues chaque semaine sur vos tâches cochées</span></div></div>
+      <div class="kpi"><span class="chip">${ic('rotate-ccw')}</span><div><b><span class="cnt" data-to="${R.repris}">0</span><small>h</small></b><span>qu'un Expert IA reprend chaque semaine</span></div></div>
+      <div class="kpi"><span class="chip">${ic('calendar')}</span><div><b><span class="cnt" data-to="${R.repris * 4.33 / 8}">0</span><small>jours</small></b><span>de travail rendus à votre équipe chaque mois</span></div></div>
+    </div>
+    <h3 class="sec-t">Où part votre temps.</h3><p class="sec-l">Heures déclarées par service, chaque semaine.</p>
+    <div class="bars">${R.ds.map(x => `<div class="barrow"><span class="chip">${ic(x.d.icone)}</span><span>${x.d.nom}</span><div class="track"><div class="fill" data-w="${x.h / max * 100}"></div></div><b>${nb(x.h)} h</b></div>`).join('')}</div>
+    <h3 class="sec-t">Vos trois priorités.</h3><p class="sec-l">Les tâches qui vous coûtent le plus, et ce que l'Expert IA en fait.</p>
+    <div class="pains">${R.liste.slice(0, 3).map((x, i) => `<div class="pain"><div class="rk"><span>PRIORITÉ ${i + 1}</span><span class="chip">${ic(x.d.icone)}</span></div><h4>${x.t.label}</h4>
+      <span class="h">${ic('clock')} ${nb(x.h)} h par semaine aujourd'hui</span><p>${x.t.fait}</p>
+      <div class="who"><img src="${ph(x.d.photo)}" alt=""><span><b>${x.d.expert}</b>, ${x.d.metier.toLowerCase()}</span></div></div>`).join('')}</div>
+    <h3 class="sec-t">Les Experts IA faits pour vous.</h3><p class="sec-l">Classés selon le temps qu'ils vous rendent.</p>
+    <div class="experts">${R.ds.slice(0, 3).map(x => { const m = Math.min(98, Math.round(70 + 28 * x.h / max)); return `<div class="xcard">
+      <div class="top-x"><img src="${ph(x.d.photo)}" alt=""><div class="match"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="${100.5 * (1 - m / 100)}"/></svg><b>${m}%</b></div></div>
+      <h4>${x.d.expert}</h4><div class="m">${x.d.metier}</div>
+      <ul>${x.t.slice(0, 3).map(t => `<li>${ic('check')}${t.label}</li>`).join('')}</ul>
+      <div class="gain">${ic('timer')} ${nb(x.h * D.partReprise)} h rendues chaque semaine</div></div>`; }).join('')}</div>
+    <div class="offer"><div><div class="eyebrow" style="color:#C5B8FF">${ic('target')} Votre priorité : ${obj ? obj.label.toLowerCase() : ''}</div>
+      <h3>${top.length > 1 ? `Commencez avec ${top[0].expert} et ${top[1].expert}.` : `Commencez avec ${top[0].expert}.`}</h3>
+      <p>En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${p1.t.label.toLowerCase()} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].join(', ') + ')' : ''}. Deux Experts IA pour 300 000 F par mois, Djénéba incluse.</p></div>
+      <div class="cta"><div class="stack">${top.map(d => `<img src="${ph(d.photo)}" alt="${d.expert}">`).join('')}<img src="${ph('av-chiefofstaff-sq.jpg')}" alt="Djénéba"></div>
+        <a class="btn btn-w" href="https://calendly.com/leslie_mstudio/meeting-with-mstudio" target="_blank" rel="noopener">${ic('calendar')} Réserver ma démonstration</a>
+        <a class="btn btn-g" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.35)" href="${mailto(R)}">${ic('mail')} Recevoir mon Déclic par email</a></div></div>
+    <p class="note">Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps déclaré ; un mois compte 4,33 semaines et une journée 8 heures. La note de maturité vient de vos trois réponses sur l'usage de l'IA, vos données et vos façons de faire.</p>
+    <div class="nav"><button class="btn btn-g" data-a="refaire">${ic('rotate-ccw')} Modifier mes réponses</button></div></div>`;
+}
+function mailto(R){
+  const p = st.profil, L = [`Le Déclic : ${p.entreprise}`, `${p.nom} (${p.fonction}), ${p.email}`, `${st.taille}, ${st.secteur}`, `Note de maturité IA : ${R.note}/100 (${R.niv.nom})`, `Attente : ${(D.objectifs.find(o => o.id === st.objectif) || {}).label}`, '',
+    `Temps perdu : ${nb(R.total)} h par semaine ; repris par un Expert IA : ${nb(R.repris)} h`, '', ...R.liste.map(x => `- ${x.d.nom} : ${x.t.label} (${nb(x.h)} h)`), '',
+    ...Object.entries(st.outils).filter(([, l]) => l.length).map(([d, l]) => `Outils ${dep(d).nom} : ${l.join(', ')}`)];
+  return 'mailto:contact@yelema.ai?cc=' + encodeURIComponent(p.email) + '&subject=' + encodeURIComponent('Mon Déclic, ' + p.entreprise) + '&body=' + encodeURIComponent(L.join('\n'));
+}
+function animer(){
+  setTimeout(() => { document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'); const R = calcul(); document.getElementById('ringc').style.strokeDashoffset = 326.7 * (1 - R.note / 100); }, 80);
+  document.querySelectorAll('.cnt').forEach(el => { const to = +el.dataset.to, t0 = performance.now(); const pas = t => { const k = Math.min(1, (t - t0) / 1300), e = 1 - Math.pow(1 - k, 3); el.textContent = nb(to * e); if (k < 1) requestAnimationFrame(pas); }; requestAnimationFrame(pas); });
+}
+
+// Clics
+app.addEventListener('click', e => {
+  const b = e.target.closest('button,[data-a]'); if (!b) return;
+  const err = document.getElementById('err'), go = document.getElementById('go');
+  const a = b.dataset.a;
+  if (a === 'prec') return prec();
+  if (a === 'refaire') return aller(1);
+  if (a === 'suiv') {
+    if (ecrans()[pos] === 'profil') {
+      ['nom', 'email', 'entreprise', 'fonction'].forEach(k => st.profil[k] = document.getElementById(k).value.trim());
+      if (Object.values(st.profil).some(v => !v) || Object.keys(st.profil).length < 4) { err.textContent = 'Merci de remplir les quatre champs.'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.profil.email)) { err.textContent = "L'adresse email semble incomplète."; return; }
     }
-  });
-
-  function resultat(){
-    const prenom = ($('#nom').value.trim().split(' ')[0]) || '';
-    const ent = $('#entreprise').value.trim();
-    const liste = Object.entries(st.taches).filter(([id, h]) => h > 0 && st.depts.has(parId[id].d.id))
-      .map(([id, h]) => ({ ...parId[id], h })).sort((a, b) => b.h - a.h);
-    const total = liste.reduce((s, x) => s + x.h, 0), repris = total * D.partReprise;
-    $('#r-titre').textContent = prenom ? `${prenom}, voici ce que Le Déclic a trouvé.` : 'Voici ce que Le Déclic a trouvé.';
-    $('#r-lede').textContent = `${ent || 'Votre entreprise'} perd du temps sur ${liste.length} tâche${liste.length > 1 ? 's' : ''} répétitive${liste.length > 1 ? 's' : ''}. Voici où, et qui peut les reprendre.`;
-    $('#k-perdu').innerHTML = nb(total) + '<small>h</small>';
-    $('#k-repris').innerHTML = nb(repris) + '<small>h</small>';
-    $('#k-jours').innerHTML = nb(repris * 4.33 / 8) + '<small>jours</small>';
-
-    const parD = {}; liste.forEach(x => { parD[x.d.id] = parD[x.d.id] || { d: x.d, h: 0, t: [] }; parD[x.d.id].h += x.h; parD[x.d.id].t.push(x.t); });
-    const ds = Object.values(parD).sort((a, b) => b.h - a.h), max = ds.length ? ds[0].h : 1;
-    $('#bars').innerHTML = ds.map(x => `<div class="barrow"><span>${x.d.nom}</span><div class="track"><div class="fill" data-w="${x.h / max * 100}"></div></div><b>${nb(x.h)} h</b></div>`).join('');
-    requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'), 60));
-
-    $('#pains').innerHTML = liste.slice(0, 3).map((x, i) => `
-      <div class="pain"><div class="rank">PRIORITÉ ${i + 1}</div><h4>${x.t.label}</h4>
-        <div class="h">${nb(x.h)} h par semaine aujourd'hui</div><p>${x.t.fait}</p>
-        <div class="who"><img src="${img(x.d.photo)}" alt=""><span><b>${x.d.expert}</b>, ${x.d.metier.toLowerCase()}</span></div></div>`).join('');
-
-    $('#experts').innerHTML = ds.slice(0, 3).map(x => `
-      <div class="xcard"><div class="hh">${nb(x.h * D.partReprise)}<small> h rendues</small></div>
-        <img src="${img(x.d.photo)}" alt=""><h4>${x.d.expert}</h4><div class="m">${x.d.metier}</div>
-        <ul>${x.t.slice(0, 3).map(t => `<li>${t.label}</li>`).join('')}</ul></div>`).join('');
-
-    const top = ds.slice(0, 2).map(x => x.d), p1 = liste[0];
-    $('#o-stack').innerHTML = top.map(d => `<img src="${img(d.photo)}" alt="${d.expert}">`).join('');
-    $('#o-titre').textContent = top.length > 1 ? `Commencez avec ${top[0].expert} et ${top[1].expert}.` : `Commencez avec ${top[0].expert}.`;
-    $('#o-texte').textContent = `En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${p1.t.label.toLowerCase()} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].join(', ') + ')' : ''}. Deux Experts IA pour 300 000 F par mois, Djénéba incluse.`;
-    $('#note').textContent = `Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps que vous avez déclaré ; un mois compte 4,33 semaines et une journée 8 heures.`;
-
-    const lignes = [`Diagnostic Le Déclic : ${ent}`, `${$('#nom').value} (${$('#fonction').value}), ${$('#email').value}`, `${$('#taille').value}, ${$('#secteur').value}`, '',
-      `Temps perdu : ${nb(total)} h par semaine ; repris par un Expert IA : ${nb(repris)} h`, '',
-      ...liste.map(x => `- ${x.d.nom} : ${x.t.label} (${nb(x.h)} h)`), '',
-      ...Object.entries(st.outils).filter(([, l]) => l.length).map(([d, l]) => `Outils ${D.departements.find(x => x.id === d).nom} : ${l.join(', ')}`)];
-    $('#o-mail').href = 'mailto:contact@yelema.ai?cc=' + encodeURIComponent($('#email').value) + '&subject=' + encodeURIComponent('Mon diagnostic Le Déclic, ' + ent) + '&body=' + encodeURIComponent(lignes.join('\n'));
+    return suiv();
   }
-
-  function aller(n){
-    if (n === 2) {
-      const req = ['nom', 'email', 'entreprise', 'fonction', 'taille', 'secteur'].filter(k => !$('#' + k).value.trim());
-      const okMail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('#email').value.trim());
-      if (req.length || !okMail) { $('#err1').textContent = req.length ? 'Merci de remplir tous les champs.' : "L'adresse email semble incomplète."; return; }
-      $('#err1').textContent = '';
-    }
-    if (n === 3) { if (!st.depts.size) { $('#err2').textContent = 'Choisissez au moins un service.'; return; } $('#err2').textContent = ''; rendreDepts(); }
-    if (n === 4) {
-      const coch = Object.entries(st.taches).filter(([id]) => st.depts.has(parId[id].d.id));
-      if (!coch.length) { $('#err3').textContent = 'Cochez au moins une tâche.'; return; }
-      if (coch.some(([, h]) => !h)) { $('#err3').textContent = "Indiquez le nombre d'heures pour chaque tâche cochée."; return; }
-      $('#err3').textContent = ''; resultat();
-    }
-    document.querySelectorAll('.screen').forEach((s, i) => s.classList.toggle('on', i === n - 1));
-    document.querySelectorAll('.step-dots span').forEach((s, i) => s.classList.toggle('on', i < n));
-    window.scrollTo({ top: n === 1 ? 0 : document.querySelector('main').offsetTop - 10, behavior: 'smooth' });
-  }
-  document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) aller(+g.dataset.go); });
-  $('#restart').addEventListener('click', () => location.reload());
+  const card = (k, v) => { app.querySelectorAll(`[data-${k}]`).forEach(c => c.classList.toggle('sel', c === b)); go.disabled = false; };
+  if (b.dataset.taille) { st.taille = b.dataset.taille; card('taille'); return setTimeout(suiv, 380); }
+  if (b.dataset.secteur) { st.secteur = b.dataset.secteur; card('secteur'); return setTimeout(suiv, 380); }
+  if (b.dataset.obj) { st.objectif = b.dataset.obj; card('obj'); return; }
+  if (b.dataset.dept) { const id = b.dataset.dept, i = st.depts.indexOf(id); i < 0 ? st.depts.push(id) : st.depts.splice(i, 1); b.classList.toggle('sel', i < 0); go.disabled = !st.depts.length; return; }
+  if (b.dataset.tache) { const id = b.dataset.tache, box = b.closest('.task'); if (id in st.taches) delete st.taches[id]; else st.taches[id] = 0; box.classList.toggle('sel', id in st.taches); box.querySelectorAll('.hb').forEach(h => h.classList.remove('on')); go.disabled = !okTaches(parId[id].d.id); return; }
+  if (b.dataset.h) { const id = b.dataset.tt; st.taches[id] = +b.dataset.h; b.parentNode.querySelectorAll('.hb').forEach(h => h.classList.toggle('on', h === b)); go.disabled = !okTaches(parId[id].d.id); return; }
+  if (b.dataset.outil) { const l = st.outils[b.dataset.d] = st.outils[b.dataset.d] || [], o = b.dataset.outil, i = l.indexOf(o); i < 0 ? l.push(o) : l.splice(i, 1); b.classList.toggle('on', i < 0); return; }
+  if (b.dataset.q) { st.mat[b.dataset.q] = +b.dataset.v; b.parentNode.querySelectorAll('.sc').forEach(s => s.classList.toggle('on', s === b)); go.disabled = Object.keys(st.mat).length !== D.maturite.length; return; }
+});
+app.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') document.getElementById('go').click(); });
+aller(0);
 })();
 </script>
 </body>

@@ -9,10 +9,45 @@ window.DECLIC = {
   ],
   // Part du temps déclaré qu'un Expert reprend, hypothèse affichée sur la page.
   partReprise: 0.6,
+  logos: {"Gmail": "gmail.svg", "Outlook": "outlook.png", "WhatsApp": "whatsapp.svg", "Notion": "notion.png", "Excel": "excel.png", "Sage": "sage.png", "Odoo": "odoo.svg", "Telegram": "telegram.png", "Facebook": "facebook.png", "Instagram": "instagram.png", "LinkedIn": "linkedin.png", "TikTok": "tiktok.svg", "Canva": "canva.png", "Google Sheets": "sheets.svg", "Power BI": "powerbi.png", "Google Drive": "drive.svg", "Slack": "slack.png", "Teams": "teams.png", "HubSpot": "hubspot.png", "QuickBooks": "quickbooks.png"},
+  tailles: [
+    { id: "xs", label: "Moins de 10 personnes", icone: "user" },
+    { id: "s", label: "10 à 49 personnes", icone: "users" },
+    { id: "m", label: "50 à 249 personnes", icone: "building-2" },
+    { id: "l", label: "250 personnes et plus", icone: "landmark" }
+  ],
+  secteurs: [
+    { label: "Commerce et distribution", icone: "store" }, { label: "Banque, microfinance et assurance", icone: "landmark" },
+    { label: "Industrie et production", icone: "factory" }, { label: "Agro-industrie", icone: "wheat" },
+    { label: "Transport et logistique", icone: "truck" }, { label: "Santé", icone: "heart-pulse" },
+    { label: "Éducation et formation", icone: "graduation-cap" }, { label: "Services professionnels", icone: "briefcase" },
+    { label: "Tech et télécoms", icone: "cpu" }, { label: "Hôtellerie et restauration", icone: "hotel" },
+    { label: "Secteur public", icone: "landmark" }, { label: "Autre secteur", icone: "globe" }
+  ],
+  // Trois questions de maturité, inspirées de la grille FFK (vision, données, processus), notées de 0 à 3.
+  maturite: [
+    { id: "q1", icone: "brain-circuit", question: "Vos équipes utilisent-elles déjà l'IA au travail ?",
+      reponses: ["Pas du tout", "Quelques-uns, chacun de son côté", "Régulièrement, sans cadre", "Oui, avec des outils fournis par l'entreprise"] },
+    { id: "q2", icone: "database", question: "Où vivent vos données (clients, ventes, factures) ?",
+      reponses: ["Dans des cahiers et sur WhatsApp", "Dans des fichiers Excel éparpillés", "Dans un ou deux logiciels", "Centralisées et fiables"] },
+    { id: "q3", icone: "workflow", question: "Vos façons de faire sont-elles écrites quelque part ?",
+      reponses: ["Elles sont dans la tête des gens", "En partie, souvent périmées", "Les étapes principales, oui", "Oui, et tout le monde les applique"] }
+  ],
+  niveaux: [
+    { min: 0, nom: "Premiers pas", texte: "Un Expert IA vous fait gagner du temps dès la première semaine, sans rien changer à vos outils." },
+    { min: 35, nom: "En route", texte: "Vos bases sont là : un Expert IA les met au travail et range ce qui est éparpillé." },
+    { min: 60, nom: "Prêt à décoller", texte: "Votre entreprise est prête : deux Experts IA peuvent prendre vos tâches les plus lourdes." },
+    { min: 85, nom: "Déjà en avance", texte: "Vous êtes mûrs pour une équipe d'Experts IA branchée sur vos logiciels." }
+  ],
+  objectifs: [
+    { id: "temps", label: "Gagner du temps", icone: "timer" }, { id: "ventes", label: "Vendre plus", icone: "trending-up" },
+    { id: "pilotage", label: "Mieux piloter", icone: "gauge" }, { id: "erreurs", label: "Faire moins d'erreurs", icone: "shield-check" }
+  ],
+
   departements: [
     {
-      id: "direction", nom: "Direction générale", expert: "Djénéba", metier: "Chief of Staff", photo: "av-chiefofstaff-sq.jpg",
-      outils: ["Gmail", "Outlook", "Agenda", "WhatsApp", "Word", "Notion"],
+      id: "direction", icone: "crown", nom: "Direction générale", expert: "Djénéba", metier: "Chief of Staff", photo: "av-chiefofstaff-sq.jpg",
+      outils: ["Gmail", "Outlook", "WhatsApp", "Teams", "Slack", "Notion"],
       taches: [
         { id: "d1", label: "Préparer mes rendez-vous et retrouver l'historique", fait: "Djénéba vous prépare un brief par rendez-vous : qui vous voyez, l'historique, l'enjeu et trois questions à poser." },
         { id: "d2", label: "Trier ma boîte mail et mes sollicitations", fait: "Elle trie la boîte de direction chaque matin et prépare les réponses que vous n'avez plus qu'à valider." },
@@ -22,8 +57,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "commercial", nom: "Commercial et ventes", expert: "Kouassi", metier: "Commercial", photo: "av-kouassi-sq.jpg",
-      outils: ["WhatsApp", "Excel", "Gmail", "CRM", "Sage", "Odoo"],
+      id: "commercial", icone: "trending-up", nom: "Commercial et ventes", expert: "Kouassi", metier: "Commercial", photo: "av-kouassi-sq.jpg",
+      outils: ["WhatsApp", "Excel", "Gmail", "HubSpot", "Sage", "Odoo"],
       taches: [
         { id: "c1", label: "Relancer les devis restés sans réponse", fait: "Kouassi relance chaque devis avec le ton juste, sans harceler, et vous prévient quand un prospect se réveille." },
         { id: "c2", label: "Répondre aux demandes entrantes (WhatsApp, email)", fait: "Il qualifie chaque demande entrante, pose les bonnes questions et vous passe les affaires sérieuses." },
@@ -33,8 +68,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "support", nom: "Service client", expert: "Awa", metier: "Support et relation client", photo: "av-awa-sq.jpg",
-      outils: ["WhatsApp", "Telegram", "Gmail", "Téléphone", "Excel"],
+      id: "support", icone: "headset", nom: "Service client", expert: "Awa", metier: "Support et relation client", photo: "av-awa-sq.jpg",
+      outils: ["WhatsApp", "Telegram", "Gmail", "Facebook", "Instagram", "Excel"],
       taches: [
         { id: "s1", label: "Répondre aux mêmes questions tous les jours", fait: "Awa répond en quelques secondes, jour et nuit, aux questions récurrentes de vos clients." },
         { id: "s2", label: "Retrouver une commande, une facture ou un historique", fait: "Elle retrouve la commande ou la facture sans faire attendre le client." },
@@ -44,7 +79,7 @@ window.DECLIC = {
       ]
     },
     {
-      id: "marketing", nom: "Marketing et communication", expert: "Fatima", metier: "Marketing et contenu", photo: "av-fatima-sq.jpg",
+      id: "marketing", icone: "megaphone", nom: "Marketing et communication", expert: "Fatima", metier: "Marketing et contenu", photo: "av-fatima-sq.jpg",
       outils: ["Facebook", "Instagram", "LinkedIn", "TikTok", "Canva", "WhatsApp"],
       taches: [
         { id: "m1", label: "Écrire les posts et les newsletters", fait: "Fatima rédige posts et newsletters dans le ton de votre marque, prêts à valider." },
@@ -55,8 +90,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "finance", nom: "Finance et comptabilité", expert: "Mamadou", metier: "Finance et comptabilité", photo: "av-mamadou-sq.jpg",
-      outils: ["Sage", "Excel", "Banque en ligne", "Mobile money", "Odoo", "Papier"],
+      id: "finance", icone: "wallet", nom: "Finance et comptabilité", expert: "Mamadou", metier: "Finance et comptabilité", photo: "av-mamadou-sq.jpg",
+      outils: ["Sage", "Excel", "QuickBooks", "Odoo", "Google Sheets"],
       taches: [
         { id: "f1", label: "Relancer les factures impayées", fait: "Mamadou relance les impayés par email et WhatsApp, au bon ton, et vous montre l'état des créances." },
         { id: "f2", label: "Saisir les factures et les pièces comptables", fait: "Il lit vos factures et pièces, propose l'imputation SYSCOHADA, et vous validez." },
@@ -66,8 +101,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "rh", nom: "RH et paie", expert: "Fatou", metier: "RH et paie", photo: "av-fatou-sq.jpg",
-      outils: ["Excel", "Outil de paie", "Gmail", "WhatsApp", "Papier"],
+      id: "rh", icone: "users", nom: "RH et paie", expert: "Fatou", metier: "RH et paie", photo: "av-fatou-sq.jpg",
+      outils: ["Excel", "Google Sheets", "Gmail", "Outlook", "WhatsApp"],
       taches: [
         { id: "r1", label: "Répondre aux questions des salariés (congés, paie)", fait: "Fatou répond aux salariés avec le solde exact et les bons documents, en minutes au lieu de jours." },
         { id: "r2", label: "Préparer la paie et vérifier les calculs CNPS et ITS", fait: "Elle prépare les éléments de paie et vérifie les calculs selon les règles ivoiriennes." },
@@ -77,8 +112,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "recrutement", nom: "Recrutement", expert: "Adjoua", metier: "Recrutement", photo: "av-adjoua-sq.jpg",
-      outils: ["LinkedIn", "Gmail", "Excel", "WhatsApp", "Calendly"],
+      id: "recrutement", icone: "user-search", nom: "Recrutement", expert: "Adjoua", metier: "Recrutement", photo: "av-adjoua-sq.jpg",
+      outils: ["LinkedIn", "Gmail", "Outlook", "Excel", "WhatsApp"],
       taches: [
         { id: "a1", label: "Rédiger et diffuser les offres d'emploi", fait: "Adjoua rédige la fiche de poste et diffuse l'offre sur vos canaux." },
         { id: "a2", label: "Trier les CV", fait: "Elle trie les candidatures, en présélectionne cinq notées et vous dit pourquoi." },
@@ -88,8 +123,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "juridique", nom: "Juridique et conformité", expert: "Ibrahim", metier: "Juridique et conformité", photo: "av-ibrahim-sq.jpg",
-      outils: ["Word", "Drive", "Gmail", "Papier"],
+      id: "juridique", icone: "scale", nom: "Juridique et conformité", expert: "Ibrahim", metier: "Juridique et conformité", photo: "av-ibrahim-sq.jpg",
+      outils: ["Google Drive", "Gmail", "Outlook", "Notion"],
       taches: [
         { id: "j1", label: "Relire les contrats reçus", fait: "Ibrahim relit le contrat, pointe les clauses à risque et propose une reformulation." },
         { id: "j2", label: "Rédiger contrats et avenants", fait: "Il rédige contrats commerciaux et de travail à partir de vos modèles." },
@@ -98,8 +133,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "operations", nom: "Opérations, achats et logistique", expert: "Salif", metier: "Opérations et logistique", photo: "av-salif-sq.jpg",
-      outils: ["Excel", "Sage", "Odoo", "WhatsApp", "Papier"],
+      id: "operations", icone: "package", nom: "Opérations, achats et logistique", expert: "Salif", metier: "Opérations et logistique", photo: "av-salif-sq.jpg",
+      outils: ["Excel", "Sage", "Odoo", "WhatsApp", "Google Sheets"],
       taches: [
         { id: "o1", label: "Surveiller les stocks et éviter les ruptures", fait: "Salif surveille les stocks et vous alerte avant la rupture." },
         { id: "o2", label: "Consulter et comparer les fournisseurs", fait: "Il consulte vos fournisseurs et compare les offres à conditions égales." },
@@ -109,7 +144,7 @@ window.DECLIC = {
       ]
     },
     {
-      id: "data", nom: "Données et reporting", expert: "Nadia", metier: "Data et analyse", photo: "av-nadia-sq.jpg",
+      id: "data", icone: "chart-column", nom: "Données et reporting", expert: "Nadia", metier: "Data et analyse", photo: "av-nadia-sq.jpg",
       outils: ["Excel", "Google Sheets", "Power BI", "Sage", "Odoo"],
       taches: [
         { id: "n1", label: "Consolider des fichiers Excel venus de partout", fait: "Nadia consolide vos fichiers et met à jour les tableaux de bord sans ressaisie." },
@@ -119,8 +154,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "design", nom: "Design et supports", expert: "Koffi", metier: "Design et marque", photo: "av-koffi-sq.jpg",
-      outils: ["Canva", "Photoshop", "PowerPoint", "WhatsApp"],
+      id: "design", icone: "palette", nom: "Design et supports", expert: "Koffi", metier: "Design et marque", photo: "av-koffi-sq.jpg",
+      outils: ["Canva", "Instagram", "Facebook", "Google Drive", "WhatsApp"],
       taches: [
         { id: "k1", label: "Produire affiches et visuels à la demande", fait: "Koffi produit l'affiche dans votre charte, prête à imprimer." },
         { id: "k2", label: "Décliner un visuel en plusieurs formats", fait: "Il décline une création en post, story, statut WhatsApp et print." },
@@ -129,8 +164,8 @@ window.DECLIC = {
       ]
     },
     {
-      id: "investissement", nom: "Investissement", expert: "Alioune", metier: "Investissement", photo: "av-alioune-sq.jpg",
-      outils: ["Excel", "Data room", "Gmail", "PowerPoint"],
+      id: "investissement", icone: "hand-coins", nom: "Investissement", expert: "Alioune", metier: "Investissement", photo: "av-alioune-sq.jpg",
+      outils: ["Excel", "Google Drive", "Gmail", "Outlook"],
       taches: [
         { id: "i1", label: "Trier les dossiers entrants", fait: "Alioune note chaque dossier contre votre thèse d'investissement." },
         { id: "i2", label: "Vérifier une data room et ses manques", fait: "Il inventorie les pièces et signale les manques et les incohérences." },
