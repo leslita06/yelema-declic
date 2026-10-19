@@ -243,12 +243,81 @@ footer{padding:22px 0 30px;color:var(--grey2);font-size:12px;text-transform:uppe
   .nav .btn{padding:14px 20px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bloom .p{transform:none}}
+/* v4 : barre du haut lisible, classement, champs libres, encarts d'analyse */
+.top .in{height:68px}
+.prog-w{flex:1;max-width:460px;margin-left:auto;display:flex;flex-direction:column;gap:6px}
+.prog-w .stepn{font-family:'Space Grotesk';font-size:12px;font-weight:600;color:var(--violet-deep);letter-spacing:.06em;text-transform:uppercase;text-align:right}
+.prog{height:10px;max-width:none;margin:0;background:#E6E1FA;box-shadow:inset 0 1px 2px rgba(48,22,103,.12)}
+.mini{width:42px;height:42px;filter:drop-shadow(0 3px 6px rgba(74,41,156,.25))}
+.sel-f{display:block;width:100%;border:0;outline:0;font:inherit;font-size:16px;color:var(--ink);background:none;padding:4px 0 0;text-transform:none;letter-spacing:0;font-weight:400;appearance:none;cursor:pointer}
+.fld.full{grid-column:1/-1}
+.autre-in{margin-top:14px}
+.hours{grid-template-columns:repeat(auto-fit,minmax(104px,1fr))}
+.hours .lab{font-weight:600;color:var(--indigo)}
+.task.manque{border-color:var(--corail);box-shadow:0 0 0 4px rgba(228,118,90,.18);animation:secoue .4s}
+@keyframes secoue{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.task-autre .task-row input{flex:1;border:0;outline:0;font:inherit;font-size:16px;color:var(--indigo);background:none;font-weight:500}
+.rank{margin:22px 0 0;background:#fff;border-radius:20px;padding:18px;border:1.5px solid var(--line);box-shadow:var(--sh)}
+.rank h3{margin:0 0 4px;font-size:18px;color:var(--indigo);display:flex;gap:10px;align-items:center}
+.rank h3 .ic{color:var(--corail)}
+.rank p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.rank ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rank li{display:flex;align-items:center;gap:12px;background:var(--lilac);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;cursor:grab;transition:transform .15s,box-shadow .15s}
+.rank li.drag{opacity:.5}
+.rank li.over{border-color:var(--violet);box-shadow:0 8px 20px rgba(141,104,250,.25)}
+.rank li .n{flex:0 0 30px;height:30px;border-radius:999px;background:var(--grad);color:#fff;font-family:'Space Grotesk';font-weight:700;display:grid;place-items:center}
+.rank li:nth-child(1) .n{background:linear-gradient(135deg,#E4765A,#F0A08A)}
+.rank li .l{flex:1;font-weight:500;color:var(--indigo);font-size:15px}
+.rank li .grip{color:var(--grey2)}
+.rank li .mv{border:0;background:#fff;border-radius:10px;width:32px;height:32px;display:grid;place-items:center;color:var(--violet);box-shadow:0 1px 3px rgba(48,22,103,.12)}
+.rank li .mv:disabled{opacity:.3;cursor:default}
+.rank li .mv .ic{width:18px;height:18px}
+.add-tool{display:flex;gap:8px;margin-top:12px}
+.add-tool input{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:14px;outline:0}
+.add-tool input:focus{border-color:var(--violet)}
+.add-tool button{border:0;border-radius:999px;background:var(--lavp);color:var(--violet-deep);padding:0 16px;font-weight:600;display:flex;align-items:center;gap:6px}
+.add-tool .ic{width:16px;height:16px}
+.logo-b .gen{width:24px;height:24px;border-radius:999px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.logo-b .gen .ic{width:14px;height:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.levels{display:grid;gap:12px;margin-top:18px}
+.lvl-r{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;display:grid;grid-template-columns:220px 1fr;gap:12px;align-items:center}
+.lvl-r .t{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--indigo)}
+.lvl-r .t .chip{width:36px;height:36px;border-radius:11px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.lvl-r .t .chip .ic{width:18px;height:18px}
+.lvl-r .opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sub-h{font-family:'Space Grotesk';font-size:18px;color:var(--indigo);margin:28px 0 12px;display:flex;gap:10px;align-items:center}
+.sub-h .ic{color:var(--violet)}
+.txt{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px 18px;margin-bottom:14px;transition:border-color .18s,box-shadow .18s}
+.txt:focus-within{border-color:var(--violet);box-shadow:0 0 0 4px rgba(141,104,250,.15)}
+.txt label{display:flex;gap:10px;align-items:center;font-weight:600;color:var(--indigo);margin-bottom:8px}
+.txt label .ic{color:var(--violet)}
+.txt textarea{width:100%;min-height:110px;border:0;outline:0;resize:vertical;font:inherit;font-size:16px;color:var(--ink);background:none}
+.insights{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.ins{background:#fff;border-radius:22px;padding:20px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.ins .hd{display:flex;align-items:center;gap:12px}
+.ins .hd .chip{width:44px;height:44px;border-radius:14px;background:var(--lavp);color:var(--violet);display:grid;place-items:center}
+.ins .hd b{font-family:'Space Grotesk';color:var(--indigo);font-size:17px}
+.ins p{margin:0;color:#4A4560;font-size:15px}
+.ins .tags{display:flex;flex-wrap:wrap;gap:6px}
+.ins .tags span{background:var(--lilac);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px;color:var(--indigo)}
+.meter{display:flex;gap:5px}.meter i{flex:1;height:8px;border-radius:999px;background:var(--lilac2)}.meter i.f{background:linear-gradient(90deg,#8D68FA,#E4765A)}
+.quote{margin-top:18px;background:#fff;border-left:5px solid var(--violet);border-radius:18px;padding:18px 20px;box-shadow:var(--sh)}
+.quote b{display:flex;gap:8px;align-items:center;color:var(--indigo);font-family:'Space Grotesk'}
+.quote b .ic{color:var(--violet)}
+.quote p{margin:8px 0 0;color:#4A4560;white-space:pre-line}
+@media (max-width:860px){.insights{grid-template-columns:1fr}.lvl-r{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .nav{position:sticky;bottom:0;z-index:10;background:rgba(247,245,254,.96);backdrop-filter:blur(8px);margin:24px -16px 0;padding:12px 16px;border-top:1px solid var(--line)}
+  .prog-w .stepn{font-size:10px}.mini{width:34px;height:34px}
+  .lvl-r .opts{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap in">
   <img class="logo" src="assets/logo/yelema-logo.png" alt="Yelema">
-  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+  <div class="prog-w"><div class="stepn" id="stepn"></div><div class="prog" aria-hidden="true"><i id="prog"></i></div></div>
   <svg class="mini" id="mini" viewBox="0 0 480 480" aria-hidden="true"></svg>
 </div></header>
 
@@ -256,30 +325,37 @@ footer{padding:22px 0 30px;color:var(--grey2);font-size:12px;text-transform:uppe
 <footer><div class="wrap">Yelema, votre entreprise, décuplée par l'IA. · contact@yelema.ai</div></footer>
 
 <script src="data.js"></script>
-<script>window.ICONES={"arrow-left": "<path d=\"m12 19-7-7 7-7\" /> <path d=\"M19 12H5\" />", "arrow-right": "<path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" />", "brain-circuit": "<path d=\"M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z\" /> <path d=\"M9 13a4.5 4.5 0 0 0 3-4\" /> <path d=\"M6.003 5.125A3 3 0 0 0 6.401 6.5\" /> <path d=\"M3.477 10.896a4 4 0 0 1 .585-.396\" /> <path d=\"M6 18a4 4 0 0 1-1.967-.516\" /> <path d=\"M12 13h4\" /> <path d=\"M12 18h6a2 2 0 0 1 2 2v1\" /> <path d=\"M12 8h8\" /> <path d=\"M16 8V5a2 2 0 0 1 2-2\" /> <circle cx=\"16\" cy=\"13\" r=\".5\" /> <circle cx=\"18\" cy=\"3\" r=\".5\" /> <circle cx=\"20\" cy=\"21\" r=\".5\" /> <circle cx=\"20\" cy=\"8\" r=\".5\" />", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\" /> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\" /> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\" /> <path d=\"M10 6h4\" /> <path d=\"M10 10h4\" /> <path d=\"M10 14h4\" /> <path d=\"M10 18h4\" />", "calendar": "<path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" />", "chart-column": "<path d=\"M3 3v16a2 2 0 0 0 2 2h16\" /> <path d=\"M18 17V9\" /> <path d=\"M13 17V5\" /> <path d=\"M8 17v-3\" />", "check": "<path d=\"M20 6 9 17l-5-5\" />", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <polyline points=\"12 6 12 12 16 14\" />", "cpu": "<rect width=\"16\" height=\"16\" x=\"4\" y=\"4\" rx=\"2\" /> <rect width=\"6\" height=\"6\" x=\"9\" y=\"9\" rx=\"1\" /> <path d=\"M15 2v2\" /> <path d=\"M15 20v2\" /> <path d=\"M2 15h2\" /> <path d=\"M2 9h2\" /> <path d=\"M20 15h2\" /> <path d=\"M20 9h2\" /> <path d=\"M9 2v2\" /> <path d=\"M9 20v2\" />", "crown": "<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\" /> <path d=\"M5 21h14\" />", "database": "<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\" /> <path d=\"M3 5V19A9 3 0 0 0 21 19V5\" /> <path d=\"M3 12A9 3 0 0 0 21 12\" />", "factory": "<path d=\"M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\" /> <path d=\"M17 18h1\" /> <path d=\"M12 18h1\" /> <path d=\"M7 18h1\" />", "file-text": "<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" />", "gauge": "<path d=\"m12 14 4-4\" /> <path d=\"M3.34 19a10 10 0 1 1 17.32 0\" />", "globe": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />", "graduation-cap": "<path d=\"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z\" /> <path d=\"M22 10v6\" /> <path d=\"M6 12.5V16a6 3 0 0 0 12 0v-3.5\" />", "hand-coins": "<path d=\"M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17\" /> <path d=\"m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\" /> <path d=\"m2 16 6 6\" /> <circle cx=\"16\" cy=\"9\" r=\"2.9\" /> <circle cx=\"6\" cy=\"5\" r=\"3\" />", "headset": "<path d=\"M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z\" /> <path d=\"M21 16v2a4 4 0 0 1-4 4h-5\" />", "heart-pulse": "<path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\" /> <path d=\"M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27\" />", "hotel": "<path d=\"M10 22v-6.57\" /> <path d=\"M12 11h.01\" /> <path d=\"M12 7h.01\" /> <path d=\"M14 15.43V22\" /> <path d=\"M15 16a5 5 0 0 0-6 0\" /> <path d=\"M16 11h.01\" /> <path d=\"M16 7h.01\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 7h.01\" /> <rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />", "landmark": "<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\" /> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\" /> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\" /> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\" /> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\" /> <polygon points=\"12 2 20 7 4 7\" />", "layers": "<path d=\"m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z\" /> <path d=\"m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65\" /> <path d=\"m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65\" />", "mail": "<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /> <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" />", "megaphone": "<path d=\"m3 11 18-5v12L3 14v-3z\" /> <path d=\"M11.6 16.8a3 3 0 1 1-5.8-1.6\" />", "message-circle": "<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\" />", "package": "<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\" /> <path d=\"M12 22V12\" /> <path d=\"m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7\" /> <path d=\"m7.5 4.27 9 5.15\" />", "palette": "<circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\" /> <path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\" />", "party-popper": "<path d=\"M5.8 11.3 2 22l10.7-3.79\" /> <path d=\"M4 3h.01\" /> <path d=\"M22 8h.01\" /> <path d=\"M15 2h.01\" /> <path d=\"M22 20h.01\" /> <path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\" /> <path d=\"m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17\" /> <path d=\"m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7\" /> <path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\" />", "rocket": "<path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z\" /> <path d=\"m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z\" /> <path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0\" /> <path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\" />", "rotate-ccw": "<path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\" /> <path d=\"M3 3v5h5\" />", "scale": "<path d=\"m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"M7 21h10\" /> <path d=\"M12 3v18\" /> <path d=\"M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2\" />", "shield-check": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" />", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\" /> <path d=\"M20 3v4\" /> <path d=\"M22 5h-4\" /> <path d=\"M4 17v2\" /> <path d=\"M5 18H3\" />", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\" /> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\" /> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\" /> <path d=\"M2 7h20\" /> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\" />", "target": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <circle cx=\"12\" cy=\"12\" r=\"6\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" />", "timer": "<line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\" /> <line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\" /> <circle cx=\"12\" cy=\"14\" r=\"8\" />", "trending-up": "<polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\" /> <polyline points=\"16 7 22 7 22 13\" />", "truck": "<path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\" /> <path d=\"M15 18H9\" /> <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\" /> <circle cx=\"17\" cy=\"18\" r=\"2\" /> <circle cx=\"7\" cy=\"18\" r=\"2\" />", "user-search": "<circle cx=\"10\" cy=\"7\" r=\"4\" /> <path d=\"M10.3 15H7a4 4 0 0 0-4 4v2\" /> <circle cx=\"17\" cy=\"17\" r=\"3\" /> <path d=\"m21 21-1.9-1.9\" />", "user": "<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\" /> <circle cx=\"12\" cy=\"7\" r=\"4\" />", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />", "wallet": "<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\" /> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\" />", "wheat": "<path d=\"M2 22 16 8\" /> <path d=\"M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z\" /> <path d=\"M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" />", "workflow": "<rect width=\"8\" height=\"8\" x=\"3\" y=\"3\" rx=\"2\" /> <path d=\"M7 11v4a2 2 0 0 0 2 2h4\" /> <rect width=\"8\" height=\"8\" x=\"13\" y=\"13\" rx=\"2\" />", "zap": "<path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\" />"};</script>
+<script>window.ICONES={"arrow-left": "<path d=\"m12 19-7-7 7-7\" /> <path d=\"M19 12H5\" />", "arrow-right": "<path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" />", "brain-circuit": "<path d=\"M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z\" /> <path d=\"M9 13a4.5 4.5 0 0 0 3-4\" /> <path d=\"M6.003 5.125A3 3 0 0 0 6.401 6.5\" /> <path d=\"M3.477 10.896a4 4 0 0 1 .585-.396\" /> <path d=\"M6 18a4 4 0 0 1-1.967-.516\" /> <path d=\"M12 13h4\" /> <path d=\"M12 18h6a2 2 0 0 1 2 2v1\" /> <path d=\"M12 8h8\" /> <path d=\"M16 8V5a2 2 0 0 1 2-2\" /> <circle cx=\"16\" cy=\"13\" r=\".5\" /> <circle cx=\"18\" cy=\"3\" r=\".5\" /> <circle cx=\"20\" cy=\"21\" r=\".5\" /> <circle cx=\"20\" cy=\"8\" r=\".5\" />", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\" /> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\" /> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\" /> <path d=\"M10 6h4\" /> <path d=\"M10 10h4\" /> <path d=\"M10 14h4\" /> <path d=\"M10 18h4\" />", "building": "<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" ry=\"2\" /> <path d=\"M9 22v-4h6v4\" /> <path d=\"M8 6h.01\" /> <path d=\"M16 6h.01\" /> <path d=\"M12 6h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M16 10h.01\" /> <path d=\"M16 14h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M8 14h.01\" />", "calendar": "<path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" />", "chart-column": "<path d=\"M3 3v16a2 2 0 0 0 2 2h16\" /> <path d=\"M18 17V9\" /> <path d=\"M13 17V5\" /> <path d=\"M8 17v-3\" />", "check": "<path d=\"M20 6 9 17l-5-5\" />", "chevron-down": "<path d=\"m6 9 6 6 6-6\" />", "chevron-up": "<path d=\"m18 15-6-6-6 6\" />", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <polyline points=\"12 6 12 12 16 14\" />", "cpu": "<rect width=\"16\" height=\"16\" x=\"4\" y=\"4\" rx=\"2\" /> <rect width=\"6\" height=\"6\" x=\"9\" y=\"9\" rx=\"1\" /> <path d=\"M15 2v2\" /> <path d=\"M15 20v2\" /> <path d=\"M2 15h2\" /> <path d=\"M2 9h2\" /> <path d=\"M20 15h2\" /> <path d=\"M20 9h2\" /> <path d=\"M9 2v2\" /> <path d=\"M9 20v2\" />", "crown": "<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\" /> <path d=\"M5 21h14\" />", "database": "<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\" /> <path d=\"M3 5V19A9 3 0 0 0 21 19V5\" /> <path d=\"M3 12A9 3 0 0 0 21 12\" />", "factory": "<path d=\"M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\" /> <path d=\"M17 18h1\" /> <path d=\"M12 18h1\" /> <path d=\"M7 18h1\" />", "file-text": "<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" />", "folder-search": "<path d=\"M10.7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v4.1\" /> <path d=\"m21 21-1.9-1.9\" /> <circle cx=\"17\" cy=\"17\" r=\"3\" />", "gauge": "<path d=\"m12 14 4-4\" /> <path d=\"M3.34 19a10 10 0 1 1 17.32 0\" />", "globe": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />", "graduation-cap": "<path d=\"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z\" /> <path d=\"M22 10v6\" /> <path d=\"M6 12.5V16a6 3 0 0 0 12 0v-3.5\" />", "grip-vertical": "<circle cx=\"9\" cy=\"12\" r=\"1\" /> <circle cx=\"9\" cy=\"5\" r=\"1\" /> <circle cx=\"9\" cy=\"19\" r=\"1\" /> <circle cx=\"15\" cy=\"12\" r=\"1\" /> <circle cx=\"15\" cy=\"5\" r=\"1\" /> <circle cx=\"15\" cy=\"19\" r=\"1\" />", "hand-coins": "<path d=\"M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17\" /> <path d=\"m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\" /> <path d=\"m2 16 6 6\" /> <circle cx=\"16\" cy=\"9\" r=\"2.9\" /> <circle cx=\"6\" cy=\"5\" r=\"3\" />", "hard-hat": "<path d=\"M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5\" /> <path d=\"M14 6a6 6 0 0 1 6 6v3\" /> <path d=\"M4 15v-3a6 6 0 0 1 6-6\" /> <rect x=\"2\" y=\"15\" width=\"20\" height=\"4\" rx=\"1\" />", "headset": "<path d=\"M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z\" /> <path d=\"M21 16v2a4 4 0 0 1-4 4h-5\" />", "heart-handshake": "<path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\" /> <path d=\"M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66\" /> <path d=\"m18 15-2-2\" /> <path d=\"m15 18-2-2\" />", "heart-pulse": "<path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\" /> <path d=\"M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27\" />", "hotel": "<path d=\"M10 22v-6.57\" /> <path d=\"M12 11h.01\" /> <path d=\"M12 7h.01\" /> <path d=\"M14 15.43V22\" /> <path d=\"M15 16a5 5 0 0 0-6 0\" /> <path d=\"M16 11h.01\" /> <path d=\"M16 7h.01\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 7h.01\" /> <rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />", "info": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 16v-4\" /> <path d=\"M12 8h.01\" />", "landmark": "<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\" /> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\" /> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\" /> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\" /> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\" /> <polygon points=\"12 2 20 7 4 7\" />", "layers": "<path d=\"m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z\" /> <path d=\"m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65\" /> <path d=\"m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65\" />", "mail": "<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /> <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" />", "map-pin": "<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\" /> <circle cx=\"12\" cy=\"10\" r=\"3\" />", "megaphone": "<path d=\"m3 11 18-5v12L3 14v-3z\" /> <path d=\"M11.6 16.8a3 3 0 1 1-5.8-1.6\" />", "message-circle": "<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\" />", "message-square-text": "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\" /> <path d=\"M13 8H7\" /> <path d=\"M17 12H7\" />", "package": "<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\" /> <path d=\"M12 22V12\" /> <path d=\"m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7\" /> <path d=\"m7.5 4.27 9 5.15\" />", "palette": "<circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" /> <circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\" /> <path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\" />", "party-popper": "<path d=\"M5.8 11.3 2 22l10.7-3.79\" /> <path d=\"M4 3h.01\" /> <path d=\"M22 8h.01\" /> <path d=\"M15 2h.01\" /> <path d=\"M22 20h.01\" /> <path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\" /> <path d=\"m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17\" /> <path d=\"m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7\" /> <path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\" />", "pencil-line": "<path d=\"M12 20h9\" /> <path d=\"M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z\" /> <path d=\"m15 5 3 3\" />", "piggy-bank": "<path d=\"M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z\" /> <path d=\"M2 9v1c0 1.1.9 2 2 2h1\" /> <path d=\"M16 11h.01\" />", "plus": "<path d=\"M5 12h14\" /> <path d=\"M12 5v14\" />", "repeat": "<path d=\"m17 2 4 4-4 4\" /> <path d=\"M3 11v-1a4 4 0 0 1 4-4h14\" /> <path d=\"m7 22-4-4 4-4\" /> <path d=\"M21 13v1a4 4 0 0 1-4 4H3\" />", "rocket": "<path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z\" /> <path d=\"m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z\" /> <path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0\" /> <path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\" />", "rotate-ccw": "<path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\" /> <path d=\"M3 3v5h5\" />", "scale": "<path d=\"m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z\" /> <path d=\"M7 21h10\" /> <path d=\"M12 3v18\" /> <path d=\"M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2\" />", "shield-check": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" />", "shield": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" />", "ship": "<path d=\"M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76\" /> <path d=\"M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6\" /> <path d=\"M12 10v4\" /> <path d=\"M12 2v3\" />", "shopping-basket": "<path d=\"m15 11-1 9\" /> <path d=\"m19 11-4-7\" /> <path d=\"M2 11h20\" /> <path d=\"m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4\" /> <path d=\"M4.5 15.5h15\" /> <path d=\"m5 11 4-7\" /> <path d=\"m9 11 1 9\" />", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\" /> <path d=\"M20 3v4\" /> <path d=\"M22 5h-4\" /> <path d=\"M4 17v2\" /> <path d=\"M5 18H3\" />", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\" /> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\" /> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\" /> <path d=\"M2 7h20\" /> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\" />", "target": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <circle cx=\"12\" cy=\"12\" r=\"6\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" />", "timer": "<line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\" /> <line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\" /> <circle cx=\"12\" cy=\"14\" r=\"8\" />", "trending-up": "<polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\" /> <polyline points=\"16 7 22 7 22 13\" />", "truck": "<path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\" /> <path d=\"M15 18H9\" /> <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\" /> <circle cx=\"17\" cy=\"18\" r=\"2\" /> <circle cx=\"7\" cy=\"18\" r=\"2\" />", "user-search": "<circle cx=\"10\" cy=\"7\" r=\"4\" /> <path d=\"M10.3 15H7a4 4 0 0 0-4 4v2\" /> <circle cx=\"17\" cy=\"17\" r=\"3\" /> <path d=\"m21 21-1.9-1.9\" />", "user": "<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\" /> <circle cx=\"12\" cy=\"7\" r=\"4\" />", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />", "wallet": "<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\" /> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\" />", "wheat": "<path d=\"M2 22 16 8\" /> <path d=\"M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\" /> <path d=\"M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z\" /> <path d=\"M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" /> <path d=\"M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\" />", "workflow": "<rect width=\"8\" height=\"8\" x=\"3\" y=\"3\" rx=\"2\" /> <path d=\"M7 11v4a2 2 0 0 0 2 2h4\" /> <rect width=\"8\" height=\"8\" x=\"13\" y=\"13\" rx=\"2\" />", "wrench": "<path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\" />", "zap": "<path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\" />"};</script>
 <script>
 (function(){
 const D = window.DECLIC, I = window.ICONES, app = document.getElementById('app');
-const ic = n => `<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[n] || ''}</svg></span>`;
-const ph = f => 'assets/experts/' + f, lg = o => 'assets/logos/' + D.logos[o];
+const ic = n => `<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[n] || I['wrench'] || ''}</svg></span>`;
+const ph = f => 'assets/experts/' + f;
+const logo = o => D.logos[o] ? `<img src="assets/logos/${D.logos[o]}" alt="">` : `<span class="gen">${ic('wrench')}</span>`;
 const nb = x => (Math.round(x * 10) / 10).toString().replace('.', ',');
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const st = { profil: {}, taille: null, secteur: null, depts: [], taches: {}, outils: {}, mat: {}, objectif: null };
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st = { profil: {}, taille: null, lieu: null, effectifs: {}, secteur: null, secteurAutre: '', depts: [], taches: {}, ordre: {}, autres: {}, outils: {}, infos: { lieux: [] }, mat: {}, objectif: null, libre: {} };
 const parId = {}; D.departements.forEach(d => d.taches.forEach(t => parId[t.id] = { t, d }));
 const dep = id => D.departements.find(d => d.id === id);
-
-// La fleur Yelema : six pétales arrondis autour d'un cœur (trois barres croisées à 30, 90 et 150 degrés).
-const PET = ['#2E4EC4', '#4A299C', '#8D68FA', '#6F4BDF', '#A486FB', '#301667'];
-function fleur(cls, couleurs, rayon){
-  return [0,1,2,3,4,5].map(k => `<g transform="rotate(${30+k*60} 240 240)"><rect class="${cls}" x="${240-rayon/2}" y="12" width="${rayon}" height="236" rx="${rayon/2}" fill="${couleurs[k]}" style="animation-delay:${k*.12}s"/></g>`).join('');
+const autreId = d => 'x-' + d;
+function tache(id){
+  if (parId[id]) return parId[id];
+  const d = dep(id.slice(2)), a = st.autres[d.id] || {};
+  return { d, t: { id, label: a.label || 'Autre tâche', fait: `${d.expert} regarde cette tâche avec vous pendant la démonstration.` } };
 }
-function majMini(f){ document.getElementById('mini').innerHTML = [0,1,2,3,4,5].map(k => `<rect x="200" y="20" width="80" height="220" rx="40" fill="${k < Math.round(f*6) ? PET[k] : '#E0E1FF'}" transform="rotate(${30+k*60} 240 240)"/>`).join(''); }
 
-// Écrans : construits à la volée, les écrans de tâches suivent les services choisis.
+// La fleur Yelema : six pétales arrondis autour d'un cœur corail.
+const PET = ['#2E4EC4', '#4A299C', '#8D68FA', '#6F4BDF', '#A486FB', '#301667'];
+function fleur(cls, rayon){
+  return [0,1,2,3,4,5].map(k => `<g transform="rotate(${30+k*60} 240 240)"><rect class="${cls}" x="${240-rayon/2}" y="12" width="${rayon}" height="236" rx="${rayon/2}" fill="${PET[k]}" style="animation-delay:${k*.12}s"/></g>`).join('');
+}
+function majMini(f){ document.getElementById('mini').innerHTML = [0,1,2,3,4,5].map(k => `<g transform="rotate(${30+k*60} 240 240)"><rect x="196" y="16" width="88" height="224" rx="44" fill="${k < Math.round(f*6) ? PET[k] : '#DCD5F7'}"/></g>`).join('') + `<circle cx="240" cy="240" r="40" fill="${f > 0 ? '#E4765A' : '#DCD5F7'}"/>`; }
+
+// Écrans construits à la volée : un écran de tâches par service choisi.
 function ecrans(){
-  const L = ['accueil', 'profil', 'taille', 'secteur', 'services'];
+  const L = ['accueil', 'profil', 'taille', 'equipes', 'secteur', 'services'];
   st.depts.forEach(d => L.push('taches:' + d));
-  L.push('maturite', 'objectif', 'analyse', 'resultat');
+  L.push('infos', 'maturite', 'objectif', 'libre', 'analyse', 'resultat');
   return L;
 }
 let pos = 0;
@@ -287,85 +363,175 @@ function aller(n){
   const L = ecrans(); pos = Math.max(0, Math.min(n, L.length - 1));
   const [nom, arg] = L[pos].split(':');
   app.innerHTML = `<section class="screen on">${VUES[nom](arg)}</section>`;
-  const f = pos / (L.length - 1);
+  const q = L.length - 3, f = Math.min(1, pos / q);
   document.getElementById('prog').style.width = (f * 100) + '%'; majMini(f);
+  document.getElementById('stepn').textContent = pos === 0 ? 'Trois minutes' : pos <= q ? `Question ${pos} sur ${q}` : 'Votre Déclic';
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (APRES[nom]) APRES[nom](arg);
 }
 const suiv = () => aller(pos + 1), prec = () => aller(pos - 1);
-const nav = (ok, label) => `<div class="nav"><button class="btn btn-g" data-a="prec">${ic('arrow-left')} Retour</button><button class="btn btn-p" data-a="suiv" ${ok ? '' : 'disabled'} id="go">${label || 'Continuer'} ${ic('arrow-right')}</button></div><div class="err" id="err"></div>`;
+const nav = (label) => `<div class="nav"><button class="btn btn-g" data-a="prec">${ic('arrow-left')} Retour</button><button class="btn btn-p" data-a="suiv" id="go">${label || 'Continuer'} ${ic('arrow-right')}</button></div><div class="err" id="err" role="alert"></div>`;
 const tete = (icone, eyebrow, titre, lede) => `<div class="wrap"><div class="q-h"><div class="q-ic">${ic(icone)}</div><div class="eyebrow">${eyebrow}</div></div><h2>${titre}</h2><p class="lede">${lede}</p>`;
+const carte = (attr, val, icone, label, sel, sous) => `<button class="card ${sel ? 'sel' : ''}" data-${attr}="${esc(val)}"><span class="tick">${ic('check')}</span><span class="chip">${ic(icone)}</span><span class="t">${label}</span>${sous ? `<span class="s">${sous}</span>` : ''}</button>`;
+const echelle = (cle, opts, val) => `<div class="scale">${opts.map((r, i) => `<button class="sc ${val === i ? 'on' : ''}" data-q="${cle}" data-v="${i}"><span class="dots">${[0,1,2,3].map(j => `<i class="${j <= i ? 'f' : ''}"></i>`).join('')}</span>${r}</button>`).join('')}</div>`;
 
 const VUES = {
   accueil: () => `<div class="hero" style="margin-top:-40px"><div class="wrap in">
       <div><div class="eyebrow">Le Déclic, par Yelema</div>
         <h1>Voyez où votre entreprise <em>perd du temps</em>.</h1>
-        <p>Une dizaine de clics, trois minutes. Le Déclic vous montre vos tâches les plus coûteuses, votre note de maturité IA et les Experts IA qui reprennent le travail.</p>
+        <p>Trois minutes de clics. Le Déclic repère vos tâches les plus pénibles, mesure le temps qu'elles vous coûtent, calcule votre note de maturité IA et vous présente les Experts IA qui reprennent le travail.</p>
         <button class="btn btn-p btn-big" data-a="suiv">${ic('sparkles')} Faire mon Déclic</button>
         <div class="perks"><span>${ic('timer')} 3 minutes</span><span>${ic('gauge')} Résultat immédiat</span><span>${ic('shield-check')} Gratuit, sans engagement</span></div>
       </div>
       <div style="position:relative">
-        <svg class="bloom" viewBox="0 0 480 480"><g class="spin">${fleur('p', PET, 92)}</g><circle class="core" cx="240" cy="240" r="34" fill="#E4765A"/></svg>
-        <div class="floaty" style="left:-10px;top:16%"><img src="${ph('av-kouassi-sq.jpg')}" alt="">Kouassi relance vos devis</div>
-        <div class="floaty" style="right:-10px;top:48%;animation-delay:1.5s"><img src="${ph('av-mamadou-sq.jpg')}" alt="">Mamadou suit vos impayés</div>
-        <div class="floaty" style="left:8%;bottom:4%;animation-delay:3s"><img src="${ph('av-awa-sq.jpg')}" alt="">Awa répond jour et nuit</div>
+        <svg class="bloom" viewBox="0 0 480 480"><g class="spin">${fleur('p', 92)}</g><circle class="core" cx="240" cy="240" r="34" fill="#E4765A"/></svg>
+        <div class="floaty" style="left:-10px;top:12%"><img src="${ph('av-kouassi-sq.jpg')}" alt="">Kouassi relance vos devis</div>
+        <div class="floaty" style="right:-14px;top:52%;animation-delay:1.5s"><img src="${ph('av-mamadou-sq.jpg')}" alt="">Mamadou suit vos impayés</div>
+        <div class="floaty" style="left:4%;bottom:0;animation-delay:3s"><img src="${ph('av-awa-sq.jpg')}" alt="">Awa répond jour et nuit</div>
       </div></div></div>`,
 
-  profil: () => tete('user', 'Étape 1', 'Faisons connaissance.', 'Votre diagnostic vous est adressé à cette adresse.') +
-    `<div class="form">${[['nom','user','Prénom et nom','Awa Koné','name'],['email','mail','Email professionnel','awa@entreprise.ci','email'],['entreprise','building-2','Entreprise','Nom de votre entreprise','organization'],['fonction','briefcase','Votre fonction','Directrice financière','organization-title']]
-      .map(([k,i,l,p,a]) => `<div class="fld">${ic(i)}<label>${l}<input id="${k}" autocomplete="${a}" ${k==='email'?'type="email"':''} placeholder="${p}" value="${esc(st.profil[k]||'')}"></label></div>`).join('')}</div>` + nav(true) + '</div>',
+  profil: () => { const p = st.profil;
+    return tete('user', 'Faisons connaissance', 'Qui êtes-vous ?', 'Pour adapter le Déclic à votre poste et vous recontacter.') +
+    `<div class="form">
+      <div class="fld">${ic('user')}<label>Prénom et nom<input id="nom" autocomplete="name" placeholder="Awa Koné" value="${esc(p.nom)}"></label></div>
+      <div class="fld">${ic('mail')}<label>Email professionnel<input id="email" type="email" autocomplete="email" placeholder="awa@entreprise.ci" value="${esc(p.email)}"></label></div>
+      <div class="fld">${ic('building-2')}<label>Entreprise<input id="entreprise" autocomplete="organization" placeholder="Nom de votre entreprise" value="${esc(p.entreprise)}"></label></div>
+      <div class="fld">${ic('layers')}<label>Votre service<select id="service" class="sel-f"><option value="">Choisir…</option>${D.departements.map(d => `<option ${p.service === d.nom ? 'selected' : ''}>${d.nom}</option>`).join('')}<option ${p.service === 'Autre' ? 'selected' : ''} value="Autre">Autre service</option></select></label></div>
+      <div class="fld full" id="srv-autre" style="${p.service === 'Autre' ? '' : 'display:none'}">${ic('pencil-line')}<label>Lequel ?<input id="serviceAutre" placeholder="Ex. qualité, sécurité, achats" value="${esc(p.serviceAutre)}"></label></div>
+      <div class="fld full">${ic('briefcase')}<label>Votre fonction<input id="fonction" autocomplete="organization-title" placeholder="Directrice financière" value="${esc(p.fonction)}"></label></div>
+    </div>` + nav() + '</div>'; },
 
-  taille: () => tete('users', 'Étape 2', 'Combien êtes-vous ?', 'Toute l\'entreprise, siège et agences confondus.') +
-    `<div class="cards c4">${D.tailles.map(t => `<button class="card ${st.taille===t.label?'sel':''}" data-taille="${t.label}"><span class="tick">${ic('check')}</span><span class="chip">${ic(t.icone)}</span><span class="t">${t.label}</span></button>`).join('')}</div>` + nav(!!st.taille) + '</div>',
+  taille: () => tete('users', 'Votre entreprise', 'Combien êtes-vous ?', 'Toute l\'entreprise, siège et agences confondus.') +
+    `<div class="cards c4">${D.tailles.map(t => carte('taille', t.label, t.icone, t.label, st.taille === t.label)).join('')}</div>` + nav() + '</div>',
 
-  secteur: () => tete('globe', 'Étape 3', 'Dans quel secteur travaillez-vous ?', 'Le Déclic adapte ses exemples à votre métier.') +
-    `<div class="cards c4">${D.secteurs.map(t => `<button class="card ${st.secteur===t.label?'sel':''}" data-secteur="${t.label}"><span class="tick">${ic('check')}</span><span class="chip">${ic(t.icone)}</span><span class="t">${t.label}</span></button>`).join('')}</div>` + nav(!!st.secteur) + '</div>',
+  equipes: () => tete('map-pin', 'Vos équipes', 'Où travaillent vos équipes ?', 'Les équipes terrain parlent aux Experts par message ou par vocal, depuis leur téléphone.') +
+    `<div class="cards c3">${D.equipes.lieu.map(l => carte('lieu', l.id, l.icone, l.label, st.lieu === l.id)).join('')}</div>
+    <div class="sub-h">${ic('users')} Combien de personnes, à peu près, à chaque niveau ? <span style="font-weight:400;color:var(--muted);font-size:14px">(facultatif)</span></div>
+    <div class="levels">${D.equipes.niveaux.map(n => `<div class="lvl-r"><span class="t"><span class="chip">${ic(n.icone)}</span>${n.label}</span><div class="opts">${D.equipes.tranches.map(t => `<button class="hb ${st.effectifs[n.id] === t ? 'on' : ''}" data-eff="${n.id}" data-t="${t}">${t}</button>`).join('')}</div></div>`).join('')}</div>` + nav() + '</div>',
 
-  services: () => tete('layers', 'Étape 4', 'Quels services voulez-vous soulager ?', 'Choisissez-en un ou plusieurs. Chaque service a son Expert IA.') +
-    `<div class="cards c4">${D.departements.map(d => `<button class="card ${st.depts.includes(d.id)?'sel':''}" data-dept="${d.id}"><span class="tick">${ic('check')}</span>
-      <span class="face"><img src="${ph(d.photo)}" alt=""><span class="chip">${ic(d.icone)}</span></span><span class="t">${d.nom}</span><span class="s">Avec ${d.expert}</span></button>`).join('')}</div>` + nav(st.depts.length > 0) + '</div>',
+  secteur: () => { const autre = D.secteurs.find(s => s.autre);
+    return tete('globe', 'Votre métier', 'Dans quel secteur travaillez-vous ?', 'Le Déclic adapte ses exemples à votre métier.') +
+    `<div class="cards c4">${D.secteurs.map(t => carte('secteur', t.label, t.icone, t.label, st.secteur === t.label)).join('')}</div>
+    <div class="fld autre-in" id="sect-autre" style="${st.secteur === autre.label ? '' : 'display:none'}">${ic('pencil-line')}<label>Votre secteur<input id="secteurAutre" placeholder="Ex. cosmétique, sécurité privée" value="${esc(st.secteurAutre)}"></label></div>` + nav() + '</div>'; },
 
-  taches: id => { const d = dep(id), k = st.depts.indexOf(id) + 1;
-    return tete(d.icone, `Service ${k} sur ${st.depts.length}`, `${d.nom} : où perdez-vous du temps ?`, 'Cochez ce qui vous coûte des heures, puis dites combien par semaine, toute l\'équipe confondue.') +
+  services: () => tete('layers', 'Vos services', 'Quels services voulez-vous soulager ?', 'Choisissez-en autant que vous voulez. Chaque service a son Expert IA.') +
+    `<div class="cards c4">${D.departements.map(d => `<button class="card ${st.depts.includes(d.id) ? 'sel' : ''}" data-dept="${d.id}"><span class="tick">${ic('check')}</span>
+      <span class="face"><img src="${ph(d.photo)}" alt=""><span class="chip">${ic(d.icone)}</span></span><span class="t">${d.nom}</span><span class="s">Avec ${d.expert}</span></button>`).join('')}</div>` + nav() + '</div>',
+
+  taches: id => { const d = dep(id), k = st.depts.indexOf(id) + 1, a = st.autres[id] || {}, xid = autreId(id);
+    const heures = tid => `<div class="hours"><span class="lab">${ic('clock')} Temps perdu chaque semaine, pour toute l'équipe</span>${D.temps.map(x => `<button class="hb ${st.taches[tid] === x.heures ? 'on' : ''}" data-h="${x.heures}" data-tt="${tid}">${x.label}</button>`).join('')}</div>`;
+    return tete(d.icone, `${d.nom}, service ${k} sur ${st.depts.length}`, 'Qu\'est-ce qui vous fait perdre du temps ?', 'Cochez les tâches qui vous pèsent, puis dites combien d\'heures elles coûtent chaque semaine à toute l\'équipe.') +
     `<div class="exp-pill"><img src="${ph(d.photo)}" alt=""><span><b>${d.expert}</b> reprend ces tâches pour vous</span></div>` +
-    d.taches.map(t => { const h = st.taches[t.id]; return `<div class="task ${t.id in st.taches?'sel':''}" data-t="${t.id}">
-        <button class="task-row" data-tache="${t.id}"><span class="box">${ic('check')}</span><span class="l">${t.label}</span></button>
-        <div class="hours"><span class="lab">${ic('clock')} Combien d'heures par semaine ?</span>
-          ${D.temps.map(x => `<button class="hb ${h===x.heures?'on':''}" data-h="${x.heures}" data-tt="${t.id}">${x.label}</button>`).join('')}</div></div>`; }).join('') +
-    `<div class="tools"><p>${ic('zap')} Les outils que ce service utilise</p><div class="logos">${d.outils.map(o => `<button class="logo-b ${(st.outils[id]||[]).includes(o)?'on':''}" data-outil="${o}" data-d="${id}"><img src="${lg(o)}" alt="">${o}</button>`).join('')}</div></div>` + nav(okTaches(id)) + '</div>'; },
+    d.taches.map(t => `<div class="task ${t.id in st.taches ? 'sel' : ''}" data-t="${t.id}">
+        <button class="task-row" data-tache="${t.id}"><span class="box">${ic('check')}</span><span class="l">${t.label}</span></button>${heures(t.id)}</div>`).join('') +
+    `<div class="task task-autre ${xid in st.taches ? 'sel' : ''}" data-t="${xid}"><div class="task-row"><button class="box" data-tache="${xid}" style="cursor:pointer" aria-label="Cocher">${ic('check')}</button><input id="autre-l" data-d="${id}" placeholder="Une autre tâche ? Décrivez-la ici" value="${esc(a.label)}"></div>${heures(xid)}</div>
+    <div id="rank"></div>
+    <div class="tools"><p>${ic('zap')} Les outils que ce service utilise</p><div class="logos" id="logos">${outilsDe(id).map(o => `<button class="logo-b ${(st.outils[id] || []).includes(o) ? 'on' : ''}" data-outil="${esc(o)}" data-d="${id}">${logo(o)}${esc(o)}</button>`).join('')}</div>
+      <div class="add-tool"><input id="outil-in" placeholder="Un autre outil ? Ex. Zoho, Perfecto, Saari"><button data-a="addtool" data-d="${id}">${ic('plus')} Ajouter</button></div></div>` + nav() + '</div>'; },
 
-  maturite: () => tete('brain-circuit', 'Presque fini', 'Où en êtes-vous avec l\'IA ?', 'Trois questions pour calculer votre note de maturité.') +
-    D.maturite.map(q => `<div class="mq"><h3><span class="chip">${ic(q.icone)}</span>${q.question}</h3><div class="scale">${q.reponses.map((r, i) => `<button class="sc ${st.mat[q.id]===i?'on':''}" data-q="${q.id}" data-v="${i}"><span class="dots">${[0,1,2,3].map(j => `<i class="${j<=i?'f':''}"></i>`).join('')}</span>${r}</button>`).join('')}</div></div>`).join('') + nav(Object.keys(st.mat).length === D.maturite.length) + '</div>',
+  infos: () => tete('folder-search', 'Vos informations', 'Où se trouvent vos informations ?', 'Clients, commandes, chiffres, procédures : là où votre équipe va les chercher.') +
+    `<div class="logos" style="margin-bottom:6px">${D.infos.lieux.map(l => `<button class="logo-b ${st.infos.lieux.includes(l.label) ? 'on' : ''}" data-lieu-info="${esc(l.label)}">${l.logo ? logo(l.logo) : `<span class="gen">${ic(l.icone)}</span>`}${l.label}</button>`).join('')}</div>
+    <div class="mq" style="margin-top:22px"><h3><span class="chip">${ic('layers')}</span>À quel point sont-elles éparpillées ?</h3>${echelle('epar', D.infos.eparpillement, st.infos.epar)}</div>
+    <div class="mq"><h3><span class="chip"><img src="assets/logos/${D.logos.WhatsApp}" alt="" style="width:22px"></span>Quelle place prend WhatsApp dans le travail ?</h3>${echelle('wa', D.infos.whatsapp, st.infos.wa)}</div>` + nav() + '</div>',
 
-  objectif: () => tete('target', 'Dernière question', 'Qu\'attendez-vous d\'abord ?', 'Le Déclic met cette attente en tête de votre plan.') +
-    `<div class="cards c4">${D.objectifs.map(o => `<button class="card ${st.objectif===o.id?'sel':''}" data-obj="${o.id}"><span class="tick">${ic('check')}</span><span class="chip">${ic(o.icone)}</span><span class="t">${o.label}</span></button>`).join('')}</div>` + nav(!!st.objectif, 'Voir mon Déclic') + '</div>',
+  maturite: () => tete('brain-circuit', 'Votre maturité', 'Où en êtes-vous avec l\'IA ?', 'Trois questions pour calculer votre note de maturité.') +
+    D.maturite.map(q => `<div class="mq"><h3><span class="chip">${ic(q.icone)}</span>${q.question}</h3>${echelle(q.id, q.reponses, st.mat[q.id])}</div>`).join('') + nav() + '</div>',
 
-  analyse: () => `<div class="wrap analyse"><svg viewBox="0 0 480 480">${fleur('', PET, 92)}<circle cx="240" cy="240" r="34" fill="#E4765A"/></svg>
+  objectif: () => tete('target', 'Votre attente', 'Qu\'attendez-vous d\'abord ?', 'Le Déclic met cette attente en tête de votre plan.') +
+    `<div class="cards c3">${D.objectifs.map(o => carte('obj', o.id, o.icone, o.label, st.objectif === o.id)).join('')}</div>` + nav() + '</div>',
+
+  libre: () => tete('message-square-text', 'Avec vos mots', 'Racontez-nous.', 'Facultatif, mais c\'est ce qui nous aide le plus à préparer votre démonstration.') +
+    `<div class="txt"><label>${ic('info')} D'autres irritants qui vous coûtent du temps ?</label><textarea id="irritants" placeholder="Ex. on ressaisit les commandes WhatsApp dans Excel, les relances se perdent…">${esc(st.libre.irritants)}</textarea></div>
+    <div class="txt"><label>${ic('sparkles')} Que voudriez-vous confier en premier à un Expert IA ?</label><textarea id="automatiser" placeholder="Ex. le suivi des impayés chaque lundi, les réponses aux questions des clients…">${esc(st.libre.automatiser)}</textarea></div>` + nav('Voir mon Déclic') + '</div>',
+
+  analyse: () => `<div class="wrap analyse"><svg viewBox="0 0 480 480">${fleur('', 92)}<circle cx="240" cy="240" r="34" fill="#E4765A"/></svg>
     <h2>Le Déclic analyse vos réponses.</h2><ul class="steps-a">
     <li>${ic('check')} Calcul du temps perdu, service par service</li><li>${ic('check')} Classement de vos priorités</li><li>${ic('check')} Choix des Experts IA faits pour vous</li><li>${ic('check')} Calcul de votre note de maturité</li></ul></div>`,
 
   resultat: () => resultat()
 };
+function outilsDe(id){ const l = dep(id).outils.slice(); (st.outils[id] || []).forEach(o => { if (!l.includes(o)) l.push(o); }); return l; }
+
+function majClassement(id){
+  const el = document.getElementById('rank'); if (!el) return;
+  const o = (st.ordre[id] || []).filter(t => t in st.taches);
+  st.ordre[id] = o;
+  if (o.length < 2) { el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="rank"><h3>${ic('trending-up')} Classez-les, de la plus pénible à la moins pénible</h3><p>Glissez les lignes, ou utilisez les flèches.</p><ol>${o.map((t, i) => `<li draggable="true" data-r="${t}"><span class="grip">${ic('grip-vertical')}</span><span class="n">${i + 1}</span><span class="l">${esc(tache(t).t.label)}</span><button class="mv" data-mv="-1" data-r="${t}" ${i === 0 ? 'disabled' : ''} aria-label="Monter">${ic('chevron-up')}</button><button class="mv" data-mv="1" data-r="${t}" ${i === o.length - 1 ? 'disabled' : ''} aria-label="Descendre">${ic('chevron-down')}</button></li>`).join('')}</ol></div>`;
+  let src = null;
+  el.querySelectorAll('li').forEach(li => {
+    li.addEventListener('dragstart', () => { src = li.dataset.r; li.classList.add('drag'); });
+    li.addEventListener('dragend', () => li.classList.remove('drag'));
+    li.addEventListener('dragover', e => { e.preventDefault(); li.classList.add('over'); });
+    li.addEventListener('dragleave', () => li.classList.remove('over'));
+    li.addEventListener('drop', e => { e.preventDefault(); const L = st.ordre[id], a = L.indexOf(src), b = L.indexOf(li.dataset.r); if (a < 0 || b < 0) return; L.splice(b, 0, L.splice(a, 1)[0]); majClassement(id); });
+  });
+}
 const APRES = {
   analyse: () => { const li = document.querySelectorAll('.steps-a li'); li.forEach((l, i) => setTimeout(() => l.classList.add('on'), 350 + i * 420)); setTimeout(suiv, 2300); },
   resultat: () => animer(),
-  profil: () => document.getElementById('nom').focus()
+  profil: () => { document.getElementById('nom').focus(); document.getElementById('service').addEventListener('change', e => { document.getElementById('srv-autre').style.display = e.target.value === 'Autre' ? '' : 'none'; }); },
+  taches: id => { majClassement(id); const a = document.getElementById('autre-l'); a.addEventListener('input', () => { st.autres[id] = { label: a.value.trim() }; if (a.value.trim() && !(autreId(id) in st.taches)) cocher(autreId(id), id, true); majClassement(id); }); }
 };
-function okTaches(id){ const c = dep(id).taches.filter(t => t.id in st.taches); return c.length > 0 && c.every(t => st.taches[t.id] > 0); }
+
+// Contrôles avant de passer à l'écran suivant : un message clair plutôt qu'un bouton mort.
+function verifier(){
+  const [nom, arg] = ecrans()[pos].split(':'), err = m => { document.getElementById('err').textContent = m; return false; };
+  if (nom === 'profil') {
+    ['nom', 'email', 'entreprise', 'fonction', 'service', 'serviceAutre'].forEach(k => st.profil[k] = document.getElementById(k).value.trim());
+    if (!st.profil.nom || !st.profil.email || !st.profil.entreprise || !st.profil.fonction || !st.profil.service) return err('Merci de remplir les cinq champs.');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.profil.email)) return err("L'adresse email semble incomplète.");
+  }
+  if (nom === 'taille' && !st.taille) return err('Choisissez une taille.');
+  if (nom === 'equipes' && !st.lieu) return err('Dites-nous où travaillent vos équipes.');
+  if (nom === 'secteur') { st.secteurAutre = (document.getElementById('secteurAutre') || {}).value || ''; if (!st.secteur) return err('Choisissez un secteur.'); if (D.secteurs.find(s => s.autre).label === st.secteur && !st.secteurAutre.trim()) return err('Précisez votre secteur.'); }
+  if (nom === 'services' && !st.depts.length) return err('Choisissez au moins un service.');
+  if (nom === 'taches') {
+    const c = [...dep(arg).taches.map(t => t.id), autreId(arg)].filter(t => t in st.taches);
+    if (!c.length) return err('Cochez au moins une tâche qui vous fait perdre du temps.');
+    const manque = c.filter(t => !(st.taches[t] > 0));
+    if (manque.length) { const el = app.querySelector(`.task[data-t="${manque[0]}"]`); el.classList.remove('manque'); void el.offsetWidth; el.classList.add('manque'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); return err(`Indiquez le temps perdu pour ${manque.length > 1 ? 'les ' + manque.length + ' tâches cochées en rouge' : 'la tâche en rouge'}.`); }
+  }
+  if (nom === 'infos' && (st.infos.epar == null || st.infos.wa == null)) return err('Répondez aux deux questions.');
+  if (nom === 'maturite' && Object.keys(st.mat).length !== D.maturite.length) return err('Répondez aux trois questions.');
+  if (nom === 'objectif' && !st.objectif) return err('Choisissez votre attente principale.');
+  if (nom === 'libre') { st.libre.irritants = document.getElementById('irritants').value.trim(); st.libre.automatiser = document.getElementById('automatiser').value.trim(); }
+  return true;
+}
+function cocher(tid, did, on){
+  const box = app.querySelector(`.task[data-t="${tid}"]`), L = st.ordre[did] = st.ordre[did] || [];
+  if (on) { if (!(tid in st.taches)) st.taches[tid] = 0; if (!L.includes(tid)) L.push(tid); }
+  else { delete st.taches[tid]; st.ordre[did] = L.filter(x => x !== tid); }
+  box.classList.toggle('sel', on); box.classList.remove('manque');
+  if (!on) box.querySelectorAll('.hb').forEach(h => h.classList.remove('on'));
+  majClassement(did);
+}
 
 function calcul(){
-  const liste = Object.entries(st.taches).filter(([id, h]) => h > 0 && st.depts.includes(parId[id].d.id)).map(([id, h]) => ({ ...parId[id], h })).sort((a, b) => b.h - a.h);
+  const liste = [];
+  st.depts.forEach(did => (st.ordre[did] || []).forEach((tid, rang) => { const h = st.taches[tid]; if (h > 0) { const x = tache(tid); liste.push({ ...x, h, rang, score: h * (rang === 0 ? 1.3 : rang === 1 ? 1.15 : 1) }); } }));
+  liste.sort((a, b) => b.score - a.score);
   const total = liste.reduce((s, x) => s + x.h, 0), repris = total * D.partReprise;
   const parD = {}; liste.forEach(x => { (parD[x.d.id] = parD[x.d.id] || { d: x.d, h: 0, t: [] }); parD[x.d.id].h += x.h; parD[x.d.id].t.push(x.t); });
   const ds = Object.values(parD).sort((a, b) => b.h - a.h);
-  const note = Math.round(Object.values(st.mat).reduce((s, v) => s + v, 0) / (3 * D.maturite.length) * 100);
+  const pts = Object.values(st.mat).reduce((s, v) => s + v, 0) + (3 - (st.infos.epar || 0));
+  const note = Math.round(pts / (3 * (D.maturite.length + 1)) * 100);
   const niv = [...D.niveaux].reverse().find(n => note >= n.min);
   return { liste, total, repris, ds, note, niv };
 }
 function resultat(){
   const R = calcul(), p = st.profil, prenom = (p.nom || '').split(' ')[0], max = R.ds.length ? R.ds[0].h : 1;
-  const obj = D.objectifs.find(o => o.id === st.objectif);
-  const top = R.ds.slice(0, 2).map(x => x.d), p1 = R.liste[0];
+  const obj = D.objectifs.find(o => o.id === st.objectif), top = R.ds.slice(0, 2).map(x => x.d), p1 = R.liste[0];
+  const lieu = D.equipes.lieu.find(l => l.id === st.lieu), nl = st.infos.lieux.length, ep = st.infos.epar || 0;
+  const eff = D.equipes.niveaux.filter(n => st.effectifs[n.id]).map(n => `${n.label} : ${st.effectifs[n.id]}`);
+  const insInfos = `<div class="ins"><div class="hd"><span class="chip">${ic('folder-search')}</span><b>Vos informations : ${D.infos.eparpillement[ep].toLowerCase()}</b></div>
+      <div class="meter">${[0,1,2,3].map(i => `<i class="${i <= ep ? 'f' : ''}"></i>`).join('')}</div>
+      ${nl ? `<div class="tags">${st.infos.lieux.map(l => `<span>${esc(l)}</span>`).join('')}</div>` : ''}
+      <p>${ep >= 2 ? 'Vos Experts commencent par rassembler ce qui est éparpillé : ils lisent vos fichiers, vos emails et vos échanges, et construisent la mémoire de l\'entreprise.' : 'Vos informations sont bien rangées : vos Experts s\'y branchent dès l\'installation.'}${st.infos.wa >= 2 ? ' Ce qui se dit sur WhatsApp entre aussi dans cette mémoire.' : ''}</p></div>`;
+  const insEquipes = `<div class="ins"><div class="hd"><span class="chip">${ic(lieu ? lieu.icone : 'users')}</span><b>Vos équipes : ${lieu ? lieu.label.toLowerCase() : ''}</b></div>
+      ${eff.length ? `<div class="tags">${eff.map(e => `<span>${e}</span>`).join('')}</div>` : ''}
+      <p>${st.lieu === 'bureau' ? 'Vos équipes parlent aux Experts depuis leur ordinateur : espace web, Teams ou Slack.' : 'Vos équipes terrain parlent aux Experts depuis leur téléphone, par message ou par vocal, et l\'Expert met le suivi à jour.'}</p></div>`;
+  const quote = (st.libre.irritants || st.libre.automatiser) ? `<div class="quote"><b>${ic('message-square-text')} Ce que vous nous avez confié</b><p>${esc([st.libre.irritants, st.libre.automatiser].filter(Boolean).join('\n\n'))}</p></div>` : '';
   return `<div class="wrap">
     <div class="r-hero">
       <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#E0E1FF" stroke-width="12"/><circle id="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#gr)" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/><defs><linearGradient id="gr"><stop offset="0" stop-color="#E4765A"/><stop offset="1" stop-color="#8D68FA"/></linearGradient></defs></svg>
@@ -379,64 +545,61 @@ function resultat(){
       <div class="kpi"><span class="chip">${ic('rotate-ccw')}</span><div><b><span class="cnt" data-to="${R.repris}">0</span><small>h</small></b><span>qu'un Expert IA reprend chaque semaine</span></div></div>
       <div class="kpi"><span class="chip">${ic('calendar')}</span><div><b><span class="cnt" data-to="${R.repris * 4.33 / 8}">0</span><small>jours</small></b><span>de travail rendus à votre équipe chaque mois</span></div></div>
     </div>
+    <div class="insights">${insInfos}${insEquipes}</div>
     <h3 class="sec-t">Où part votre temps.</h3><p class="sec-l">Heures déclarées par service, chaque semaine.</p>
     <div class="bars">${R.ds.map(x => `<div class="barrow"><span class="chip">${ic(x.d.icone)}</span><span>${x.d.nom}</span><div class="track"><div class="fill" data-w="${x.h / max * 100}"></div></div><b>${nb(x.h)} h</b></div>`).join('')}</div>
-    <h3 class="sec-t">Vos trois priorités.</h3><p class="sec-l">Les tâches qui vous coûtent le plus, et ce que l'Expert IA en fait.</p>
-    <div class="pains">${R.liste.slice(0, 3).map((x, i) => `<div class="pain"><div class="rk"><span>PRIORITÉ ${i + 1}</span><span class="chip">${ic(x.d.icone)}</span></div><h4>${x.t.label}</h4>
+    <h3 class="sec-t">Vos trois priorités.</h3><p class="sec-l">Vos tâches les plus pénibles et les plus coûteuses, et ce que l'Expert IA en fait.</p>
+    <div class="pains">${R.liste.slice(0, 3).map((x, i) => `<div class="pain"><div class="rk"><span>PRIORITÉ ${i + 1}</span><span class="chip">${ic(x.d.icone)}</span></div><h4>${esc(x.t.label)}</h4>
       <span class="h">${ic('clock')} ${nb(x.h)} h par semaine aujourd'hui</span><p>${x.t.fait}</p>
       <div class="who"><img src="${ph(x.d.photo)}" alt=""><span><b>${x.d.expert}</b>, ${x.d.metier.toLowerCase()}</span></div></div>`).join('')}</div>
+    ${quote}
     <h3 class="sec-t">Les Experts IA faits pour vous.</h3><p class="sec-l">Classés selon le temps qu'ils vous rendent.</p>
     <div class="experts">${R.ds.slice(0, 3).map(x => { const m = Math.min(98, Math.round(70 + 28 * x.h / max)); return `<div class="xcard">
-      <div class="top-x"><img src="${ph(x.d.photo)}" alt=""><div class="match"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="${100.5 * (1 - m / 100)}"/></svg><b>${m}%</b></div></div>
+      <div class="top-x"><img src="${ph(x.d.photo)}" alt=""><div class="match"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="${100.5 * (1 - m / 100)}"/></svg><b>${m}%</b></div></div>
       <h4>${x.d.expert}</h4><div class="m">${x.d.metier}</div>
-      <ul>${x.t.slice(0, 3).map(t => `<li>${ic('check')}${t.label}</li>`).join('')}</ul>
+      <ul>${x.t.slice(0, 3).map(t => `<li>${ic('check')}${esc(t.label)}</li>`).join('')}</ul>
       <div class="gain">${ic('timer')} ${nb(x.h * D.partReprise)} h rendues chaque semaine</div></div>`; }).join('')}</div>
     <div class="offer"><div><div class="eyebrow" style="color:#fff">${ic('target')} Votre priorité : ${obj ? obj.label.toLowerCase() : ''}</div>
       <h3>${top.length > 1 ? `Commencez avec ${top[0].expert} et ${top[1].expert}.` : `Commencez avec ${top[0].expert}.`}</h3>
-      <p>En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${p1.t.label.toLowerCase()} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].join(', ') + ')' : ''}. Deux Experts IA pour 300 000 F par mois, Djénéba incluse.</p></div>
+      <p>En une heure de démonstration, nous montrons ${p1.d.expert} sur « ${esc(p1.t.label.toLowerCase())} », dans vos outils${(st.outils[p1.d.id] || []).length ? ' (' + st.outils[p1.d.id].map(esc).join(', ') + ')' : ''}.</p></div>
       <div class="cta"><div class="stack">${top.map(d => `<img src="${ph(d.photo)}" alt="${d.expert}">`).join('')}<img src="${ph('av-chiefofstaff-sq.jpg')}" alt="Djénéba"></div>
-        <a class="btn btn-w" href="https://calendly.com/leslie_mstudio/meeting-with-mstudio" target="_blank" rel="noopener">${ic('calendar')} Réserver ma démonstration</a>
-        <a class="btn btn-g" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.35)" href="${mailto(R)}">${ic('mail')} Recevoir mon Déclic par email</a></div></div>
-    <p class="note">Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps déclaré ; un mois compte 4,33 semaines et une journée 8 heures. La note de maturité vient de vos trois réponses sur l'usage de l'IA, vos données et vos façons de faire.</p>
+        <a class="btn btn-w btn-big" href="https://calendly.com/leslie_mstudio/meeting-with-mstudio" target="_blank" rel="noopener">${ic('calendar')} Réserver ma démonstration</a></div></div>
+    <p class="note">Estimation : un Expert IA reprend environ ${Math.round(D.partReprise * 100)} % du temps déclaré ; un mois compte 4,33 semaines et une journée 8 heures. La note de maturité vient de vos réponses sur l'usage de l'IA, vos données, vos façons de faire et l'éparpillement de vos informations.</p>
     <div class="nav"><button class="btn btn-g" data-a="refaire">${ic('rotate-ccw')} Modifier mes réponses</button></div></div>`;
 }
-function mailto(R){
-  const p = st.profil, L = [`Le Déclic : ${p.entreprise}`, `${p.nom} (${p.fonction}), ${p.email}`, `${st.taille}, ${st.secteur}`, `Note de maturité IA : ${R.note}/100 (${R.niv.nom})`, `Attente : ${(D.objectifs.find(o => o.id === st.objectif) || {}).label}`, '',
-    `Temps perdu : ${nb(R.total)} h par semaine ; repris par un Expert IA : ${nb(R.repris)} h`, '', ...R.liste.map(x => `- ${x.d.nom} : ${x.t.label} (${nb(x.h)} h)`), '',
-    ...Object.entries(st.outils).filter(([, l]) => l.length).map(([d, l]) => `Outils ${dep(d).nom} : ${l.join(', ')}`)];
-  return 'mailto:contact@yelema.ai?cc=' + encodeURIComponent(p.email) + '&subject=' + encodeURIComponent('Mon Déclic, ' + p.entreprise) + '&body=' + encodeURIComponent(L.join('\n'));
-}
 function animer(){
-  setTimeout(() => { document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'); const R = calcul(); document.getElementById('ringc').style.strokeDashoffset = 326.7 * (1 - R.note / 100); }, 80);
+  setTimeout(() => { document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'); document.getElementById('ringc').style.strokeDashoffset = 326.7 * (1 - calcul().note / 100); }, 80);
   document.querySelectorAll('.cnt').forEach(el => { const to = +el.dataset.to, t0 = performance.now(); const pas = t => { const k = Math.min(1, (t - t0) / 1300), e = 1 - Math.pow(1 - k, 3); el.textContent = nb(to * e); if (k < 1) requestAnimationFrame(pas); }; requestAnimationFrame(pas); });
 }
 
 // Clics
 app.addEventListener('click', e => {
   const b = e.target.closest('button,[data-a]'); if (!b) return;
-  const err = document.getElementById('err'), go = document.getElementById('go');
-  const a = b.dataset.a;
+  const a = b.dataset.a, err = document.getElementById('err'); if (err) err.textContent = '';
   if (a === 'prec') return prec();
   if (a === 'refaire') return aller(1);
-  if (a === 'suiv') {
-    if (ecrans()[pos] === 'profil') {
-      ['nom', 'email', 'entreprise', 'fonction'].forEach(k => st.profil[k] = document.getElementById(k).value.trim());
-      if (Object.values(st.profil).some(v => !v) || Object.keys(st.profil).length < 4) { err.textContent = 'Merci de remplir les quatre champs.'; return; }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.profil.email)) { err.textContent = "L'adresse email semble incomplète."; return; }
-    }
-    return suiv();
-  }
-  const card = (k, v) => { app.querySelectorAll(`[data-${k}]`).forEach(c => c.classList.toggle('sel', c === b)); go.disabled = false; };
-  if (b.dataset.taille) { st.taille = b.dataset.taille; card('taille'); return setTimeout(suiv, 380); }
-  if (b.dataset.secteur) { st.secteur = b.dataset.secteur; card('secteur'); return setTimeout(suiv, 380); }
-  if (b.dataset.obj) { st.objectif = b.dataset.obj; card('obj'); return; }
-  if (b.dataset.dept) { const id = b.dataset.dept, i = st.depts.indexOf(id); i < 0 ? st.depts.push(id) : st.depts.splice(i, 1); b.classList.toggle('sel', i < 0); go.disabled = !st.depts.length; return; }
-  if (b.dataset.tache) { const id = b.dataset.tache, box = b.closest('.task'); if (id in st.taches) delete st.taches[id]; else st.taches[id] = 0; box.classList.toggle('sel', id in st.taches); box.querySelectorAll('.hb').forEach(h => h.classList.remove('on')); go.disabled = !okTaches(parId[id].d.id); return; }
-  if (b.dataset.h) { const id = b.dataset.tt; st.taches[id] = +b.dataset.h; b.parentNode.querySelectorAll('.hb').forEach(h => h.classList.toggle('on', h === b)); go.disabled = !okTaches(parId[id].d.id); return; }
+  if (a === 'suiv') { if (verifier()) suiv(); return; }
+  if (a === 'addtool') { const inp = document.getElementById('outil-in'), v = inp.value.trim(), did = b.dataset.d; if (!v) return; const l = st.outils[did] = st.outils[did] || []; if (!l.includes(v)) l.push(v); document.getElementById('logos').innerHTML = outilsDe(did).map(o => `<button class="logo-b ${l.includes(o) ? 'on' : ''}" data-outil="${esc(o)}" data-d="${did}">${logo(o)}${esc(o)}</button>`).join(''); inp.value = ''; return; }
+  const choix = k => app.querySelectorAll(`[data-${k}]`).forEach(c => c.classList.toggle('sel', c === b));
+  if (b.dataset.taille) { st.taille = b.dataset.taille; choix('taille'); return setTimeout(suiv, 380); }
+  if (b.dataset.lieu) { st.lieu = b.dataset.lieu; choix('lieu'); return; }
+  if (b.dataset.eff) { const k = b.dataset.eff; st.effectifs[k] = st.effectifs[k] === b.dataset.t ? null : b.dataset.t; b.parentNode.querySelectorAll('.hb').forEach(h => h.classList.toggle('on', h.dataset.t === st.effectifs[k])); return; }
+  if (b.dataset.secteur) { st.secteur = b.dataset.secteur; choix('secteur'); const autre = D.secteurs.find(s => s.autre).label === st.secteur, box = document.getElementById('sect-autre'); box.style.display = autre ? '' : 'none'; if (autre) document.getElementById('secteurAutre').focus(); else setTimeout(suiv, 380); return; }
+  if (b.dataset.obj) { st.objectif = b.dataset.obj; choix('obj'); return; }
+  if (b.dataset.dept) { const id = b.dataset.dept, i = st.depts.indexOf(id); i < 0 ? st.depts.push(id) : st.depts.splice(i, 1); b.classList.toggle('sel', i < 0); return; }
+  if (b.dataset.tache) { const id = b.dataset.tache, did = tache(id).d.id; return cocher(id, did, !(id in st.taches)); }
+  if (b.dataset.h) { const id = b.dataset.tt, did = tache(id).d.id; if (!(id in st.taches)) cocher(id, did, true); st.taches[id] = +b.dataset.h; b.parentNode.querySelectorAll('.hb').forEach(h => h.classList.toggle('on', h === b)); b.closest('.task').classList.remove('manque'); return; }
   if (b.dataset.outil) { const l = st.outils[b.dataset.d] = st.outils[b.dataset.d] || [], o = b.dataset.outil, i = l.indexOf(o); i < 0 ? l.push(o) : l.splice(i, 1); b.classList.toggle('on', i < 0); return; }
-  if (b.dataset.q) { st.mat[b.dataset.q] = +b.dataset.v; b.parentNode.querySelectorAll('.sc').forEach(s => s.classList.toggle('on', s === b)); go.disabled = Object.keys(st.mat).length !== D.maturite.length; return; }
+  if (b.dataset.lieuInfo) { const l = st.infos.lieux, v = b.dataset.lieuInfo, i = l.indexOf(v); i < 0 ? l.push(v) : l.splice(i, 1); b.classList.toggle('on', i < 0); return; }
+  if (b.dataset.mv) { const did = ecrans()[pos].split(':')[1], L = st.ordre[did], i = L.indexOf(b.dataset.r), j = i + +b.dataset.mv; [L[i], L[j]] = [L[j], L[i]]; return majClassement(did); }
+  if (b.dataset.q) { const q = b.dataset.q, v = +b.dataset.v; if (q === 'epar' || q === 'wa') st.infos[q] = v; else st.mat[q] = v; b.parentNode.querySelectorAll('.sc').forEach(s => s.classList.toggle('on', s === b)); return; }
 });
-app.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') document.getElementById('go').click(); });
+app.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
+  e.preventDefault();
+  if (e.target.id === 'outil-in') return app.querySelector('[data-a="addtool"]').click();
+  if (e.target.id !== 'autre-l') document.getElementById('go').click();
+});
 aller(0);
 })();
 </script>
